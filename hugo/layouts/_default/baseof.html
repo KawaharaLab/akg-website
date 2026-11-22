@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#ffffff">
 <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ partial "page-title.html" . }} – {{ .Site.Title }}{{ end }}</title>
 <meta name="description" content="{{ .Site.Params.description }}">
 {{- range .AllTranslations }}

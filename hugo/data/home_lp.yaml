@@ -1,0 +1,91 @@
+# トップページ（LP 構成）の文言と掲載研究。日本語ページは ja、英語ページは en だけを出す。
+hero:
+  title: ["Inventing", "the Everyday."]
+  ja: "日常を、発明する。"
+  copy: "材料・デバイスからAIまで。現実世界で動作するコンピューティング技術を研究しています。"
+  copyEn: "Research in computing systems that operate in the physical world, from materials and devices to AI."
+  feature:
+    url: /archives/5621/
+    label: "WIRELESS POWER"
+    image: /images/home/abstract-textile-v1.png
+    title: "全身無線給電・通信服"
+    titleEn: "Wireless power and data networking around the body"
+    generated: true
+
+about:
+  - ja: "AKGは、材料・デバイスからAIまでを横断する東京大学の研究グループです。センシング、無線給電、デジタルファブリケーション、ロボティクスなどの研究を行っています。"
+    en: "AKG is a research group at the University of Tokyo. We work across materials, devices, sensing, wireless power, digital fabrication, robotics and AI."
+  - ja: "必要な要素技術を開発し、ハードウェアとソフトウェアを組み合わせて試作し、実際の環境で評価します。"
+    en: "We develop the necessary technologies, build hardware and software prototypes, and evaluate them through experiments in real environments."
+
+projects:
+  - url: /archives/5621/
+    image: /images/home/abstract-textile-v1.png
+    generated: true
+    kicker: "無線給電・ウェアラブル"
+    kickerEn: "Wireless power · Wearables"
+    title: "全身無線給電・通信服"
+    titleEn: "Wireless power and data networking around the body"
+    text: "衣服に組み込んだコイルを利用し、身体の周囲に配置した機器へ電力とデータを届ける技術です。"
+    textEn: "A textile-based system for distributing power and data among devices worn around the body."
+  - url: /archives/5727/
+    image: /images/home/abstract-loop-v1.png
+    generated: true
+    kicker: "インタフェース・省電力"
+    kickerEn: "Interfaces · Low-power devices"
+    title: "指輪型の超低消費電力ワイヤレスマウス"
+    titleEn: "Ultra-low-power ring mouse"
+    text: "磁界を用いた通信技術により、指輪型入力デバイスの消費電力を低減する研究です。"
+    textEn: "A ring-based input device designed for low power consumption using magnetic-field communications."
+  - url: /archives/5704/
+    image: /images/research/act-abstract-v1.png
+    generated: true
+    kicker: "触覚・ロボティクス"
+    kickerEn: "Tactile sensing · Robotics"
+    title: "触覚を用いたロボットの行動選択"
+    titleEn: "Tactile-guided robotic action selection"
+    text: "触覚や力覚のデータを用いて、ロボットが対象物の状態を判断し、行動を選択するための研究です。"
+    textEn: "Research on robotic state recognition and action selection using touch and force signals."
+  - url: /archives/2764/
+    image: /images/home/poimo.webp
+    generated: false
+    kicker: "ソフトロボティクス"
+    kickerEn: "Soft robotics · Mobility"
+    title: "poimo：空気で膨らむモビリティ"
+    titleEn: "poimo — inflatable mobility"
+    text: "空気で膨らむ構造を利用した、軽量で持ち運び可能なモビリティの研究です。"
+    textEn: "Research on lightweight, portable mobility using inflatable structures."
+
+approach:
+  lead: "研究テーマに必要な要素技術の開発から、システムの試作、実験・評価まで、一連のプロセスに取り組んでいます。"
+  leadEn: "Our research spans the development of core technologies, system prototyping, and experimental evaluation."
+  steps:
+    - title: "要素技術の開発"
+      titleEn: "Core technologies"
+      text: "材料、センサ、回路、計算手法などの要素技術を研究します。"
+      textEn: "We develop materials, sensing, circuits and computational techniques."
+    - title: "システムの試作"
+      titleEn: "System prototyping"
+      text: "ハードウェアとソフトウェアを組み合わせ、試作機を開発します。"
+      textEn: "We build functional prototypes integrating hardware and software."
+    - title: "実験と評価"
+      titleEn: "Experimental evaluation"
+      text: "性能や使いやすさを検証し、研究成果として発表します。"
+      textEn: "We evaluate performance and usability, and publish the results."
+
+people:
+  text: "複数の教員・研究者と学生が、それぞれの専門性を生かして研究を進めています。"
+  textEn: "Faculty, researchers and students work together across disciplines."
+
+join:
+  text: "修士・博士課程への進学や研究インターンシップについては、最新の募集・選考情報をご確認ください。"
+  textEn: "For graduate study and research internships, please refer to the latest program and admissions information."
+  options:
+    - {ja: "修士課程", en: "Master’s program", tag: "MASTER'S"}
+    - {ja: "博士課程", en: "Doctoral program", tag: "PhD"}
+    - {ja: "研究インターンシップ", en: "Research internships", tag: "INTERNSHIP"}
+
+contact:
+  text: "研究内容や共同研究に関するお問い合わせは、以下のメールアドレスまでご連絡ください。"
+  textEn: "For questions about research and collaboration, please contact us by email."
+  email: "kawahara@akg.t.u-tokyo.ac.jp"

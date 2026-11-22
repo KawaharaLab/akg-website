@@ -1,29 +1,43 @@
+{{- $en := eq .Site.Language.Lang "en" -}}
 {{- $other := "" }}
 {{- range .Translations }}{{ $other = . }}{{ end }}
-<header id="masthead">
-  <p class="site-title"><a href="{{ "/" | relLangURL }}">{{ .Site.Title }}</a></p>
-  <nav aria-label="{{ i18n "navLabel" }}"><ul>
-    <li><a href="{{ "research/" | relLangURL }}">Research</a></li>
-    <li><a href="{{ "member/" | relLangURL }}">People</a></li>
-    {{- $publicationsURL := "publications-2026/" -}}
-    {{- if .Site.GetPage "/publications" }}{{ $publicationsURL = "publications/" }}{{ end -}}
-    <li><a href="{{ $publicationsURL | relLangURL }}">Publications</a></li>
-    <li><a href="{{ "archives/category/news/" | relLangURL }}">News</a></li>
-    <li><a href="{{ "engagement/" | relLangURL }}">Engagement</a></li>
-    <li><a href="{{ "about/" | relLangURL }}">About</a></li>
-    <li class="lang">
-      {{- with $other -}}
-        <a href="{{ .RelPermalink }}" hreflang="{{ .Language.Lang }}" lang="{{ .Language.Lang }}" data-setlang="{{ .Language.Lang }}">{{ i18n "switchTo" }}</a>
-      {{- else -}}
-        {{- $home := "" }}{{ range .Site.Home.Translations }}{{ $home = . }}{{ end -}}
-        {{- with $home }}<a href="{{ .RelPermalink }}" hreflang="{{ .Language.Lang }}" lang="{{ .Language.Lang }}" data-setlang="{{ .Language.Lang }}">{{ i18n "switchTo" }}</a>{{ end -}}
-      {{- end -}}
-    </li>
-  </ul></nav>
+{{- if not $other }}{{ range .Site.Home.Translations }}{{ $other = . }}{{ end }}{{ end }}
+{{- $publicationsURL := "publications-2026/" -}}
+{{- if .Site.GetPage "/publications" }}{{ $publicationsURL = "publications/" }}{{ end -}}
+<header id="masthead" class="site-header">
+  <a href="{{ "/" | relLangURL }}" class="identity" aria-label="{{ if $en }}AKG / Home{{ else }}AKG / トップ{{ end }}"><strong>{{ .Site.Title }}</strong><span class="uni">THE UNIVERSITY<br>OF TOKYO</span></a>
+  <div class="header-right">
+    <nav class="site-nav" id="site-nav" aria-label="{{ i18n "navLabel" }}">
+      <a href="{{ "research/" | relLangURL }}">{{ if $en }}Research{{ else }}研究紹介{{ end }}</a>
+      <a href="{{ "member/" | relLangURL }}">{{ if $en }}People{{ else }}メンバー{{ end }}</a>
+      <a href="{{ $publicationsURL | relLangURL }}">{{ if $en }}Publications{{ else }}研究業績{{ end }}</a>
+      <a href="{{ "archives/category/news/" | relLangURL }}">{{ if $en }}News{{ else }}ニュース{{ end }}</a>
+      <a href="{{ "engagement/" | relLangURL }}">{{ if $en }}Engagement{{ else }}社会連携{{ end }}</a>
+      <a href="{{ "about/" | relLangURL }}">{{ if $en }}About{{ else }}私たちについて{{ end }}</a>
+    </nav>
+    <div class="languages" role="group" aria-label="{{ if $en }}Language{{ else }}言語切替{{ end }}">
+      {{- if $en }}
+      {{ with $other }}<a href="{{ .RelPermalink }}" hreflang="ja" lang="ja" data-setlang="ja" aria-label="日本語">JP</a>{{ end }}<span aria-current="true">EN</span>
+      {{- else }}
+      <span aria-current="true">JP</span>{{ with $other }}<a href="{{ .RelPermalink }}" hreflang="en" lang="en" data-setlang="en" aria-label="English">EN</a>{{ end }}
+      {{- end }}
+    </div>
+    <button type="button" id="menu" class="menu" aria-controls="site-nav" aria-expanded="false" aria-label="{{ if $en }}Open menu{{ else }}メニューを開く{{ end }}" data-open="{{ if $en }}Open menu{{ else }}メニューを開く{{ end }}" data-close="{{ if $en }}Close menu{{ else }}メニューを閉じる{{ end }}">☰</button>
+  </div>
 </header>
 <script>
 document.addEventListener('click',function(e){
   var a=e.target.closest&&e.target.closest('a[data-setlang]');
   if(a){try{localStorage.setItem('akg-lang',a.getAttribute('data-setlang'));}catch(x){}}
 });
+(function(){
+  var nav=document.getElementById('site-nav'),menu=document.getElementById('menu');
+  if(!nav||!menu)return;
+  menu.addEventListener('click',function(){
+    var open=nav.classList.toggle('open');
+    menu.setAttribute('aria-expanded',String(open));
+    menu.textContent=open?'×':'☰';
+    menu.setAttribute('aria-label',open?menu.dataset.close:menu.dataset.open);
+  });
+})();
 </script>

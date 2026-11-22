@@ -6,8 +6,6 @@
   --type-body:1rem;
   --type-heading:clamp(1.125rem,1.5vw,1.375rem);
 }
-@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--text:#DADCE0}}
-:root[data-theme="dark"]{--text:#DADCE0}
 
 body{font-family:var(--reading);font-size:var(--type-body);line-height:1.9;letter-spacing:.015em}
 :lang(en){letter-spacing:0}
