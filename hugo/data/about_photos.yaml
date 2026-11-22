@@ -1,0 +1,19 @@
+# Replace src, alt / altEn and set generated: false when real photographs are supplied.
+- src: /images/about/lab-placeholder.webp
+  alt: '実験装置を囲む研究者を描いた生成画像'
+  altEn: 'Generated image of researchers testing an apparatus'
+  caption: '実験する'
+  captionEn: 'Experiment'
+  generated: true
+- src: /images/about/making-placeholder.webp
+  alt: '布の回路を試作する手元を描いた生成画像'
+  altEn: 'Generated image of hands prototyping a textile circuit'
+  caption: '手を動かしてつくる'
+  captionEn: 'Make things by hand'
+  generated: true
+- src: /images/about/discussion-placeholder.webp
+  alt: '試作品を囲んで議論する研究者を描いた生成画像'
+  altEn: 'Generated image of researchers discussing a prototype'
+  caption: '考えを持ち寄る'
+  captionEn: 'Share ideas'
+  generated: true

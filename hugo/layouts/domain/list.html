@@ -1,0 +1,96 @@
+{{ define "main" }}
+{{ $en := eq .Site.Language.Lang "en" }}
+{{ $slug := path.Base .File.Dir }}
+{{ $posts := where .Site.RegularPages "Params.domains" "intersect" (slice $slug) }}
+{{ $posts = where $posts "Params.projectRole" "ne" "earlier" }}
+<div class="page-head page-head--domain">
+  <div class="page-head__left">
+    <p class="crumb"><a href="{{ "research/" | relLangURL }}">Research</a></p>
+    <h1 class="verb-xl verb-xl--en">{{ .Params.verbEn }}</h1>
+    <p class="dom__field"><span class="ja">{{ .Params.verb }}</span><span class="sep">｜</span>{{ .Params.field }}</p>
+    <p class="dom__keys">{{ .Params.topics }}</p>
+  </div>
+  <div class="page-lede">
+      {{ with .Params.why }}
+      <div class="qa">
+        <p class="qa__label">Why</p>
+        {{ range . }}<p>{{ . }}</p>{{ end }}
+      </div>
+      {{ end }}
+      {{ with .Params.approach }}
+      <div class="qa">
+        <p class="qa__label">Approach</p>
+        {{ range . }}<p>{{ . }}</p>{{ end }}
+      </div>
+      {{ end }}
+  </div>
+</div>
+
+{{ with .Params.image }}
+<figure class="plate plate--hero">
+  <img src="{{ . }}" alt="" loading="lazy">
+  {{ with $.Params.imageCaption }}<figcaption>{{ . }}</figcaption>{{ end }}
+</figure>
+{{ end }}
+
+<section class="block">
+  <h2 class="block__hd">{{ i18n "mainWorks" }}</h2>
+  <ul class="works works--lg">
+    {{ range index .Site.Data.works $slug }}
+      <li>
+        <a class="works__link" href="{{ .url | relLangURL }}">
+        <span class="works__t">{{ if and $en .titleEn }}{{ .titleEn }}{{ else }}{{ .titleJa }}{{ end }}</span>
+        <span class="works__m">{{ if and $en .meaningEn }}{{ .meaningEn }}{{ else }}{{ .meaning }}{{ end }}</span>
+        <span class="works__v">{{ .title }}<br>{{ .venue }}</span>
+        <span class="works__destination">{{ i18n "viewPublication" }}</span>
+        </a>
+      </li>
+    {{ end }}
+  </ul>
+</section>
+
+
+{{ $slug := path.Base .File.Dir }}
+{{ $eng := slice }}
+{{ range $.Site.Data.engagement.sections }}
+  {{ range .items }}
+    {{ if and (in .domains $slug) (ne .id "riise") }}
+      {{ $eng = $eng | append (dict "it" . "sec" $) }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+{{ with $eng }}
+<section class="block">
+  <h2 class="block__hd">{{ i18n "engagementPts" }}</h2>
+  <ul class="eng-link">
+    {{ range . }}
+      <li>
+        <a href="{{ "engagement/" | relLangURL }}#{{ .it.id }}">
+          <span class="eng-link__t">{{ if and $en .it.titleEn }}{{ .it.titleEn }}{{ else }}{{ .it.title }}{{ end }}</span>
+          <span class="eng-link__r">{{ if and $en .it.roleEn }}{{ .it.roleEn }}{{ else }}{{ .it.role }}{{ end }}</span>
+        </a>
+      </li>
+    {{ end }}
+  </ul>
+</section>
+{{ end }}
+
+<section class="block">
+  <h2 class="block__hd">{{ i18n "inDomain" }} <span class="cnt">{{ len $posts }}</span></h2>
+  <ul class="entry-list research-entries">
+    {{ range $posts.ByDate.Reverse }}
+      <li>
+        <a class="research-entry" href="{{ .RelPermalink }}">
+          {{ partial "research-thumbnail.html" . }}
+          <span class="research-entry__title">{{ partial "page-title.html" . }}</span>
+        </a>
+        {{ partial "research-venues.html" . }}
+        <span class="meta">
+          {{ with .Date }}<time datetime="{{ .Format "2006-01-02" }}">{{ .Format "2006.01.02" }}</time>{{ end }}
+          {{ range .Params.domains }}{{ if ne . $slug }}<span class="xtag">{{ . }}</span>{{ end }}{{ end }}
+        </span>
+      </li>
+    {{ end }}
+  </ul>
+</section>
+{{ end }}

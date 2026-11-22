@@ -1,0 +1,12 @@
+{{ define "main" }}
+<div class="page-head">
+  <div class="page-head__left">
+    <h1 class="page-title">404</h1>
+    <p class="page-title-ja">{{ i18n "notFound" }}</p>
+  </div>
+  <div class="page-lede">
+    <p>{{ i18n "notFoundBody" | safeHTML }}</p>
+    <p><a href="{{ "/" | relLangURL }}">{{ i18n "home" }}</a> ・ <a href="{{ "research/" | relLangURL }}">Research</a> ・ <a href="{{ "archives/category/news/" | relLangURL }}">News</a> ・ <a href="{{ "about/" | relLangURL }}">About</a></p>
+  </div>
+</div>
+{{ end }}

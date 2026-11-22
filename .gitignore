@@ -1,0 +1,24 @@
+# 公開リポジトリに載せるのはサイトのソース（hugo/）、生成スクリプト（tools/）、
+# 自動ビルド設定（.github/）だけ。それ以外は明示的に追加しない限り追跡しない。
+/*
+!/.gitignore
+!/.github/
+!/hugo/
+!/tools/
+
+# ビルド生成物・一時ファイル
+/hugo/public/
+/hugo/resources/
+.hugo_build.lock
+__pycache__/
+node_modules/
+.DS_Store
+
+# 作業ログ（内部メモ）。公開リポジトリには載せない
+/hugo/README.md
+
+# 秘密情報の事故防止
+.env*
+*.local.json
+*.pem
+*.key

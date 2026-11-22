@@ -1,0 +1,30 @@
+- id: spatial
+  title: 実空間の理解
+  titleEn: Understanding physical spaces
+  description: イベントカメラや独自のセンサから得られる情報をニューラルネットワークで扱い、空間の形や変化を捉えます。世界モデルへの入力も見直し、必要な情報を少ない計算で扱う方法を研究しています。
+  descriptionEn: We use neural networks to process information from event cameras and custom sensors, capturing spatial structure and change. We also study inputs to world models to handle the necessary information with less computation.
+  works: [event-ray-tracing, world-model-sampling]
+- id: dexterity
+  title: 触覚と器用な操作
+  titleEn: Touch and dexterous manipulation
+  description: 独自センサによる力・触覚情報を、物体との接触状態の理解や動作の学習につなげます。視覚・言語・動作を扱うVLAと組み合わせ、より器用な操作を目指します。
+  descriptionEn: We connect force and tactile information from custom sensors to understanding contact with objects and learning actions. We aim for more dexterous manipulation by combining this information with vision-language-action models.
+  works: [haptic-contact, acoustic-gripper, touch-onomatopoeia]
+- id: environments
+  title: 生活環境の制御
+  titleEn: Controlling everyday environments
+  description: 空調を対象に、強化学習や大規模言語モデルを使った制御を研究しています。実際の運用に合わせて制御ルールや学習方法を改善し、日常の環境を整える技術につなげます。
+  descriptionEn: We study air-conditioning control using reinforcement learning and large language models. We improve control rules and learning methods for actual operation, developing technologies for everyday environments.
+  works: [llm-hvac]
+- id: chips
+  title: 用途に合わせたAIチップ
+  titleEn: AI chips designed for their use cases
+  description: 実世界の用途から必要な処理を見極め、AIの計算と回路を一緒に設計する研究を始めています。反射的な処理で対応できる入力では上位の処理を動かさないなど、省電力化の可能性を検討しています。
+  descriptionEn: We are beginning research that identifies the processing needed for real-world use cases and designs AI computation and circuits together. We are exploring ways to reduce power, such as keeping higher-level processing inactive when a reflex-like response is sufficient.
+  works: [reflex-gating]
+- id: wearables
+  title: 身体とつながるデバイス
+  titleEn: Devices connected to the body
+  description: 衣服や小さな装着型デバイスにセンシング・通信・入力の機能を組み込みます。電子テキスタイルや極低電力の回路を使い、生活の中で使い続けられる形を研究しています。
+  descriptionEn: We integrate sensing, communication and input into clothing and small wearable devices. Using electronic textiles and ultra-low-power circuits, we study forms that people can continue to use in everyday life.
+  works: [picoring-mouse, nfc-clothing, knittable-textiles]

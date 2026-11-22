@@ -1,0 +1,46 @@
+{{ define "main" }}
+{{ $en := eq .Site.Language.Lang "en" }}
+{{ $doms := dict }}
+{{ range where .Site.Pages "Type" "domain" }}
+  {{ $doms = merge $doms (dict (path.Base .File.Dir) .) }}
+{{ end }}
+
+<div class="page-head landing-head">
+  {{ partial "landing-title.html" (dict "page" . "title" "Engagement" "japanese" "社会連携") }}
+  <div class="page-lede"><p>{{ .Params.lede }}</p></div>
+</div>
+
+<section class="eng-forms" aria-labelledby="eng-forms-heading">
+  <h2 id="eng-forms-heading">{{ .Params.formsTitle }}</h2>
+  <div class="eng-forms__grid">
+    {{ range .Params.forms }}
+    <div class="eng-form"><h3>{{ .title }}</h3><p>{{ .body }}</p></div>
+    {{ end }}
+  </div>
+</section>
+
+{{ range .Site.Data.engagement.sections }}
+<section class="eng">
+  <div class="eng__lead">
+    <h2 class="eng__label">{{ if $en }}{{ .labelEn }}{{ else }}{{ .label }}{{ end }}</h2>
+    {{ if and $en .noteEn }}<p class="eng__note">{{ .noteEn }}</p>{{ else }}{{ with .note }}<p class="eng__note">{{ . }}</p>{{ end }}{{ end }}
+  </div>
+  <ul class="eng__list">
+    {{ range .items }}
+      <li{{ with .id }} id="{{ . }}"{{ end }}>
+        <span class="eng__t">
+          {{ with .url }}<a href="{{ if hasPrefix . "/" }}{{ . | relLangURL }}{{ else }}{{ . }}{{ end }}" rel="noopener">{{ end }}{{ if and $en .titleEn }}{{ .titleEn }}{{ else }}{{ .title }}{{ end }}{{ with .url }}</a>{{ end }}
+        </span>
+        <span class="eng__role">{{ if and $en .roleEn }}{{ .roleEn }}{{ else }}{{ .role }}{{ end }}</span>
+        <span class="eng__body">{{ if and $en .bodyEn }}{{ .bodyEn }}{{ else }}{{ .body }}{{ end }}</span>
+        {{ with .domains }}{{ if lt (len .) 4 }}
+        <span class="eng__doms">
+          {{ range . }}{{ with index $doms . }}<a href="{{ .RelPermalink }}">{{ .Params.verbEn }}<em>{{ .Params.verb }}</em></a>{{ end }}{{ end }}
+        </span>
+        {{ end }}{{ end }}
+      </li>
+    {{ end }}
+  </ul>
+</section>
+{{ end }}
+{{ end }}

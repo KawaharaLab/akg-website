@@ -1,0 +1,28 @@
+{{ define "main" }}
+{{ $en := eq .Language.Lang "en" }}
+{{ partial "home-slideshow.html" . }}
+{{ partial (printf "hero-%s.html" .Site.Language.Lang) . }}
+
+<section class="block block--news">
+  <h2 class="block__hd">News <a class="all" href="{{ "archives/category/news/" | relLangURL }}">{{ i18n "seeAll" }}</a></h2>
+  {{ $announcements := where (where .Site.RegularPages "Section" "archives") "Params.categories" "intersect" (slice "news" "events" "seminar" "media") }}
+  {{ $awards := where $announcements "Params.categories" "intersect" (slice "award" "press") }}
+  {{ $news := $announcements | complement $awards }}
+  {{ partial "news-tiles.html" (dict "pages" (first 6 $news.ByDate.Reverse) "en" $en) }}
+</section>
+
+<section class="block">
+  <h2 class="block__hd">Research <a class="all" href="{{ "research/" | relLangURL }}">{{ i18n "seeDomains" }}</a></h2>
+  <div class="home-doms">
+    {{ range sort (where .Site.Pages "Type" "domain") "Params.weight" }}
+      <a class="home-dom" href="{{ .RelPermalink }}">
+        {{ with .Params.image }}<span class="plate plate--card"><img src="{{ . }}" alt="" loading="lazy"></span>{{ end }}
+        <span class="home-dom__verb home-dom__verb--en">{{ .Params.verbEn }}</span>
+        <span class="home-dom__field"><span class="ja">{{ .Params.verb }}</span>｜{{ .Params.field }}</span>
+        <span class="home-dom__sum">{{ .Params.summary }}</span>
+        <span class="home-dom__keys">{{ .Params.topics }}</span>
+      </a>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

@@ -1,0 +1,52 @@
+{{ $en := eq .Site.Language.Lang "en" }}
+{{ $rows := index .Site.Data.publication_preview .Site.Language.Lang }}
+{{ $recent := .Params.publicationRecent | default false }}
+{{ $year := 0 }}
+{{ $today := (now.UTC.Add 32400000000000).Format "2006-01-02" }}
+{{ $cutoff := ((now.UTC.Add 32400000000000).AddDate 0 0 -364).Format "2006-01-02" }}
+{{ $years := slice }}{{ range $rows }}{{ $years = $years | append .fiscalYear }}{{ end }}{{ $years = sort (uniq $years) "value" "desc" }}
+{{ if $recent }}
+  {{ $rows = where (where (where $rows "dateStart" "ne" "") "dateStart" "le" $today) "dateEnd" "ge" $cutoff }}
+{{ else }}
+  {{ $year = int (strings.TrimPrefix "publications-" .File.ContentBaseName) }}
+  {{ $rows = where $rows "fiscalYear" $year }}
+{{ end }}
+<div class="publication-index">
+<nav class="publication-years" aria-label="{{ if $en }}Fiscal year{{ else }}年度{{ end }}">
+  <a href="{{ "publications/" | relLangURL }}" {{ if $recent }}aria-current="page"{{ end }}>{{ if $en }}Recent{{ else }}最新{{ end }}</a>
+  {{ range first 3 $years }}<a href="{{ printf "publications-%d/" (int .) | relLangURL }}" {{ if eq (int .) $year }}aria-current="page"{{ end }}>{{ if $en }}FY {{ . }}{{ else }}{{ . }}年度{{ end }}</a>{{ end }}
+  <details {{ if and (not $recent) (not (in (first 3 $years) $year)) }}open{{ end }}><summary>{{ if $en }}Earlier years{{ else }}過去の年度{{ end }}</summary><div>{{ range after 3 $years }}<a href="{{ printf "publications-%d/" (int .) | relLangURL }}" {{ if eq (int .) $year }}aria-current="page"{{ end }}>{{ . }}</a>{{ end }}</div></details>
+</nav>
+{{ if $recent }}<p class="publication-period">{{ $cutoff }} — {{ $today }}{{ if $en }} · Dates are recorded by month; boundary months are included. Future months and undated records remain in the fiscal-year lists.{{ else }} · 書誌の掲載・発表月で判定し、境界の月を含めています。翌月以降の予定・時期不明の項目は年度別に掲載しています。{{ end }}</p>{{ end }}
+{{ if not $rows }}<p>{{ if $en }}No entries in this period.{{ else }}この期間の業績はありません。{{ end }}</p>{{ end }}
+<nav class="publication-sections" aria-label="{{ if $en }}Publication type{{ else }}業績種別{{ end }}">
+{{ range slice (dict "id" "journal" "ja" "論文誌" "en" "Journals") (dict "id" "international" "ja" "国際会議" "en" "International conferences") (dict "id" "domestic" "ja" "国内会議・研究会" "en" "Domestic conferences & meetings") (dict "id" "other" "ja" "その他" "en" "Other") }}
+<a href="#publications-{{ .id }}">{{ if $en }}{{ .en }}{{ else }}{{ .ja }}{{ end }} <span>{{ len (where $rows "group" .id) }}</span></a>
+{{ end }}
+</nav>
+{{ range slice (dict "id" "journal" "ja" "論文誌" "en" "Journals") (dict "id" "international" "ja" "国際会議" "en" "International conferences") (dict "id" "domestic" "ja" "国内会議・研究会" "en" "Domestic conferences & meetings") (dict "id" "other" "ja" "その他" "en" "Other") }}
+<section class="publication-group" id="publications-{{ .id }}">
+<h2>{{ if $en }}{{ .en }}{{ else }}{{ .ja }}{{ end }} <span>{{ len (where $rows "group" .id) }}</span></h2>
+<div class="publication-list">
+{{ range where $rows "group" .id }}
+<article class="publication-record" id="{{ .id }}">
+<div class="publication-record__date">{{ .year }}{{ with .month }}<span>{{ printf "%02d" (int .) }}</span>{{ end }}</div>
+<div class="publication-record__body">
+<h3>{{ .title }}</h3>
+<p class="publication-record__authors">{{ .authors }}</p>
+<p class="publication-record__venue">{{ .venue }}</p>
+{{ if or .track .format .presentation .status }}<p class="publication-record__type">{{ if .track }}{{ if $en }}Workshop{{ else }}ワークショップ{{ end }}{{ end }}{{ with .format }}<span>{{ . }}</span>{{ end }}{{ with .presentation }}<span>{{ if eq . "demo" }}{{ if $en }}Demo{{ else }}デモ{{ end }}{{ else }}{{ if $en }}Poster{{ else }}ポスター{{ end }}{{ end }}</span>{{ end }}{{ with .status }}<span>{{ if $en }}Forthcoming{{ else }}刊行待ち{{ end }}</span>{{ end }}</p>{{ end }}
+<div class="publication-record__links">{{ range .links }}<a href="{{ . }}" rel="noopener">{{ if or (strings.Contains . "doi.org/") (strings.Contains . "/doi/") }}DOI{{ else if strings.HasSuffix . ".pdf" }}PDF{{ else }}{{ if $en }}Source{{ else }}掲載情報{{ end }}{{ end }} ↗</a>{{ end }}{{ range $i,$url := .researchLinks }}<a href="{{ $url | relLangURL }}">{{ if $en }}Research{{ else }}研究紹介{{ end }}{{ if gt $i 0 }} {{ add $i 1 }}{{ end }} →</a>{{ end }}</div>
+<details class="publication-citation"><summary>{{ if $en }}Citation & details{{ else }}書誌情報・詳細{{ end }}</summary>
+<p class="publication-citation__text">{{ .citation }}</p>
+<p class="publication-citation__status">{{ if $en }}Original category: {{ .section }}. Peer-review status and manuscript type have not yet been verified; explicit source descriptions are shown above.{{ else }}元の分類：{{ .section }}。査読の有無・原稿種別は未確認です。原文に明記された区別のみ上に表示しています。{{ end }}</p>
+<button class="publication-copy" type="button" hidden data-done="{{ if $en }}Copied{{ else }}コピーしました{{ end }}" data-failed="{{ if $en }}Please select and copy the citation above{{ else }}上の書誌を選択してコピーしてください{{ end }}">{{ if $en }}Copy citation{{ else }}引用をコピー{{ end }}</button><span class="publication-copy-status" role="status"></span>
+</details>
+</div>
+</article>
+{{ end }}
+</div>
+</section>
+{{ end }}
+</div>
+{{ with resources.Get "js/publication-citation.js" }}{{ $js := . | minify | fingerprint }}<script src="{{ $js.RelPermalink }}" defer></script>{{ end }}

@@ -1,0 +1,21 @@
+{{ define "main" }}
+{{ $posts := where .Site.RegularPages "Params.archived" true }}
+<div class="page-head page-head--domain">
+  <div class="page-head__left">
+    <p class="crumb"><a href="{{ "research/" | relLangURL }}">Research</a></p>
+    <h1 class="page-title">Archive</h1>
+  </div>
+  <div class="page-lede">{{ .Content }}</div>
+</div>
+<section class="block">
+  <h2 class="block__hd">{{ i18n "research" }} <span class="cnt">{{ len $posts }}</span></h2>
+  <ul class="entry-list">
+    {{ range $posts.ByDate.Reverse }}
+      <li>
+        <a href="{{ .RelPermalink }}">{{ partial "page-title.html" . }}</a>
+        <span class="meta">{{ with .Date }}<time datetime="{{ .Format "2006-01-02" }}">{{ .Format "2006.01.02" }}</time>{{ end }}</span>
+      </li>
+    {{ end }}
+  </ul>
+</section>
+{{ end }}

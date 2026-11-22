@@ -1,0 +1,60 @@
+{{ $en := eq .Language.Lang "en" }}
+{{ $cutoff := now.AddDate 0 0 -365 }}
+{{ $all := where (where .Site.RegularPages "Section" "archives") "Params.categories" "intersect" (slice "news" "award" "events" "seminar" "media" "press") }}
+{{ $awardPosts := where $all "Params.categories" "intersect" (slice "award") }}
+{{ $pressPosts := where $all "Params.categories" "intersect" (slice "press") }}
+{{ $newsPosts := $all | complement $awardPosts | complement $pressPosts }}
+{{ $sections := slice
+  (dict "id" "updates" "title" (i18n "newsUpdates") "posts" $newsPosts)
+  (dict "id" "awards" "title" (i18n "award") "posts" $awardPosts)
+  (dict "id" "press" "title" (cond $en "Press releases" "プレスリリース") "posts" $pressPosts)
+}}
+{{ if eq .Params.categoryPath "news/award" }}{{ $sections = slice (index $sections 1) }}{{ end }}
+{{ if eq .Params.categoryPath "news/press" }}{{ $sections = slice (index $sections 2) }}{{ end }}
+<header class="landing-head">{{ partial "landing-title.html" (dict "page" . "title" "News" "japanese" "ニュース") }}<p class="landing-lede">{{ if $en }}News, awards and press releases from our research group.{{ else }}研究グループのニュース、受賞、プレスリリースを紹介します。{{ end }}</p></header>
+{{ if ne .Params.categoryPath "news" }}<p class="crumb"><a href="{{ "archives/category/news/" | relLangURL }}">{{ if $en }}All news, awards and press releases{{ else }}ニュース・受賞・プレスリリースの一覧{{ end }} →</a></p>{{ end }}
+<p class="news-period-note">{{ if $en }}Showing the latest 365 days. Expand More to browse earlier articles by year.{{ else }}直近365日の記事を掲載しています。それ以前の記事はMoreから年別にご覧いただけます。{{ end }}</p>
+<div class="news-sections">
+{{ range $sections }}
+  {{ $section := . }}
+  <section class="news-category" id="{{ .id }}" aria-labelledby="{{ .id }}-heading">
+    <header class="news-category__head">
+      <h2 id="{{ .id }}-heading">{{ .title }}</h2>
+      <span class="news-category__count">{{ len .posts }}{{ if not $en }}件{{ end }}</span>
+    </header>
+    <div class="news-category__body">
+    {{ $recent := where .posts "Date" "ge" $cutoff }}
+    {{ $older := where .posts "Date" "lt" $cutoff }}
+    {{ $past := $older.ByDate.Reverse.GroupByDate "2006" }}
+    <div class="news-recent">
+    {{ with $recent }}
+      {{ partial "news-tiles.html" (dict "pages" .ByDate.Reverse "en" $en) }}
+    {{ else }}
+      <p class="news-empty">{{ if $en }}No articles in the latest 365 days.{{ else }}直近365日の記事はありません。{{ end }}</p>
+    {{ end }}
+    </div>
+    {{ with $past }}
+      <details class="news-older">
+        <summary><span class="news-older__more">More <span aria-hidden="true">＋</span></span><span class="news-older__less">{{ if $en }}Less{{ else }}閉じる{{ end }} <span aria-hidden="true">−</span></span><span class="news-older__period">{{ if $en }}Earlier articles{{ else }}それ以前の記事{{ end }}</span></summary>
+        <div class="news-older__body">
+          <nav class="news-year-index" aria-label="{{ $section.title }} — {{ if $en }}Year index{{ else }}年別インデックス{{ end }}">
+            <p>{{ if $en }}Browse by year{{ else }}年別インデックス{{ end }}</p>
+            <ul>{{ range . }}<li><a href="#{{ $section.id }}-{{ .Key }}">{{ .Key }}{{ if not $en }}年{{ end }} <span>({{ len .Pages }})</span></a></li>{{ end }}</ul>
+          </nav>
+          {{ if eq $section.id "awards" }}
+            <details class="award-records">
+              <summary>{{ i18n "awardRecords" }}</summary>
+              <nav class="award-records__years" aria-label="{{ i18n "awardRecords" }}">
+                {{ range seq 2026 -1 2008 }}<a href="{{ printf "awardsmedia-%d/" . | relLangURL }}">{{ . }}</a>{{ end }}
+                <a href="{{ "awardsmedia/" | relLangURL }}">{{ i18n "olderAwardRecords" }}</a>
+              </nav>
+            </details>
+          {{ end }}
+          {{ range . }}{{ partial "news-year.html" (dict "id" $section.id "year" .Key "pages" .Pages "en" $en) }}{{ end }}
+        </div>
+      </details>
+    {{ end }}
+    </div>
+  </section>
+{{ end }}
+</div>

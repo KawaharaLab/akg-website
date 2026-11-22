@@ -1,0 +1,7 @@
+{{- /* このページが content-en/ から来た英語版かどうか。ja サイトでは常に true */ -}}
+{{- $t := true -}}
+{{- if eq .Site.Language.Lang "en" -}}
+  {{- $t = false -}}
+  {{- with .File }}{{ if strings.Contains .Filename "/content-en/" }}{{ $t = true }}{{ end }}{{ end -}}
+{{- end -}}
+{{- return $t -}}

@@ -1,0 +1,19 @@
+{{- /* 初回訪問はブラウザ言語で ja/en を選び、クリックで選んだ言語は localStorage に保存して以後はそれを優先する。
+       静的サイトなので判定は必ずクライアント側。<link rel=alternate> が無いページでは何もしない（ループ防止）。 */ -}}
+<script>
+(function(){
+  try{
+    var cur=(document.documentElement.lang||'').slice(0,2);
+    var want=localStorage.getItem('akg-lang');
+    if(want!=='ja'&&want!=='en'){
+      if(sessionStorage.getItem('akg-lang-auto'))return;
+      sessionStorage.setItem('akg-lang-auto','1');
+      var nl=(navigator.languages&&navigator.languages[0])||navigator.language||'';
+      want=nl.slice(0,2).toLowerCase()==='ja'?'ja':'en';
+    }
+    if(want===cur)return;
+    var alt=document.querySelector('link[rel="alternate"][hreflang="'+want+'"]');
+    if(alt&&alt.href&&alt.href!==location.href)location.replace(alt.href+location.hash);
+  }catch(e){}
+})();
+</script>

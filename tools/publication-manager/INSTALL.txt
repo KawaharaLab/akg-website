@@ -1,0 +1,11 @@
+# 初回導入
+
+1. 新シートを開く：https://docs.google.com/spreadsheets/d/1YM2zKkFzx1WUAkdzrx8X_Bp1tpDUJNKHJe2OlLafvGc/edit
+2. 「拡張機能 → Apps Script」を開く。
+3. 最初のコードを同梱の Code.gs 全文で置き換えて保存。
+4. 関数 openManager を実行し、Googleの認可を確認する。
+5. シートを再読み込み。「Publication管理」メニューから入力画面を開く。
+
+preview.html は画面だけの確認用です。ブラウザで開けます。保存・外部取得は接続されていません。
+
+元シートと既存サイトは変更していません。新シートは移行確認用です。

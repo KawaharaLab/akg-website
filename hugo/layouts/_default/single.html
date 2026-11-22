@@ -1,0 +1,52 @@
+{{ define "main" }}
+{{ $en := eq .Site.Language.Lang "en" }}
+{{ $publication := or .Params.publicationRecent (strings.HasPrefix .File.ContentBaseName "publications-") }}
+<article class="entry{{ if $publication }} publication-page{{ end }}">
+  {{ if $publication }}<header class="landing-head landing-head--title">{{ partial "landing-title.html" (dict "page" . "title" (partial "page-title.html" .) "japanese" "研究業績") }}</header>{{ else }}<h1 class="entry-title">{{ partial "page-title.html" . }}</h1>{{ end }}
+  {{ with .Date }}{{ if not $.Params.type }}<p class="entry-date"><time datetime="{{ .Format "2006-01-02" }}">{{ .Format (i18n "dateFmt") }}</time></p>{{ end }}{{ end }}
+  {{ if .Params.domains }}{{ partial "research-venues.html" . }}{{ end }}
+  {{ if or .Params.publicationRecent (strings.HasPrefix .File.ContentBaseName "publications-") }}{{ partial "publication-preview.html" . }}{{ else }}
+  <div class="entry-content">{{ if eq .Params.contentFormat "html" }}{{ .RawContent | safeHTML }}{{ else }}{{ .Content }}{{ end }}</div>
+  {{ end }}
+  {{ partial "research-contact.html" . }}
+
+  {{ with .Params.project }}
+    {{ $sibs := where (where $.Site.RegularPages "Params.project" .) "Permalink" "ne" $.Permalink }}
+    {{ with $sibs }}
+    <section class="series">
+      <h2 class="block__hd">{{ i18n "sameProject" }}</h2>
+      <ul class="series__list">
+        {{ range .ByDate.Reverse }}
+          <li>
+            <a href="{{ .RelPermalink }}">{{ partial "page-title.html" . }}</a>
+            <span class="series__meta">{{ .Date.Format "2006.01.02" }}{{ if eq .Params.projectRole "primary" }} ・ {{ i18n "latest" }}{{ end }}</span>
+          </li>
+        {{ end }}
+      </ul>
+    </section>
+    {{ end }}
+  {{ end }}
+
+  {{ with .Params.pubs }}
+  <section class="pubs">
+    <h2 class="block__hd">{{ i18n "relatedPubs" }}</h2>
+    <ul class="pubs__list">
+      {{ range . }}
+        <li>
+          {{ with .url }}<a href="{{ . }}" rel="noopener">{{ end }}
+          <span class="pubs__cite">{{ with .referenceLabel }}[{{ . }}] {{ end }}{{ .citation }}</span>
+          {{ with .url }}</a>{{ end }}
+          <span class="pubs__meta">{{ $sec := .section | default "" }}{{ if strings.Contains $sec " / " }}{{ $sec = index (split $sec " / ") (cond $en 1 0) }}{{ end }}{{ $sec }}{{ with .year }} ・ {{ i18n "fiscalYear" . }}{{ end }}</span>
+        </li>
+      {{ end }}
+    </ul>
+  </section>
+  {{ end }}
+
+  {{ with .Params.domains }}
+  <p class="entry-doms">
+    {{ range . }}<a href="{{ printf "research/%s/" . | relLangURL }}">{{ . }}</a>{{ end }}
+  </p>
+  {{ end }}
+</article>
+{{ end }}

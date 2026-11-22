@@ -1,0 +1,10 @@
+{{ define "main" }}
+<h1 class="list-title">{{ partial "page-title.html" . }}</h1>
+<ul class="entry-list">
+{{ range .Paginator.Pages }}
+  <li><a href="{{ .RelPermalink }}">{{ partial "page-title.html" . }}</a>
+      {{ with .Date }}<time datetime="{{ .Format "2006-01-02" }}">{{ .Format "2006.01.02" }}</time>{{ end }}</li>
+{{ end }}
+</ul>
+{{ template "_internal/pagination.html" . }}
+{{ end }}

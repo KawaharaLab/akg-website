@@ -1,0 +1,6 @@
+{{- with .Params.contact_names }}
+<section class="research-contact" aria-label="{{ if eq $.Site.Language.Lang "en" }}Contact{{ else }}連絡先{{ end }}">
+  <h2 class="research-contact__label">{{ if eq $.Site.Language.Lang "en" }}Contact{{ else }}連絡先{{ end }}</h2>
+  <p class="research-contact__names">{{ delimit . " / " }}</p>
+</section>
+{{- end }}

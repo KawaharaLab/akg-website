@@ -1,0 +1,3 @@
+{{- if and (eq .Site.Language.Lang "en") (not (partial "is-translated.html" .)) (not .Params.bilingual) (not .IsHome) }}
+<p class="ja-only" lang="en">{{ i18n "jaOnly" }}</p>
+{{- end }}

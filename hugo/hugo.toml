@@ -1,0 +1,89 @@
+baseURL = "https://www.akg.t.u-tokyo.ac.jp/"
+languageCode = "ja"
+defaultContentLanguage = "ja"
+defaultContentLanguageInSubdir = false   # ja はルート、en は /en/
+title = "AKG"
+
+[languages]
+  [languages.ja]
+    languageName = "日本語"
+    languageCode = "ja"
+    weight = 1
+    [languages.ja.params]
+      description = "東京大学 AKG。材料から知能まで、現実世界で使える技術をつくる。"
+  [languages.en]
+    languageName = "English"
+    languageCode = "en"
+    weight = 2
+    [languages.en.params]
+      description = "AKG, The University of Tokyo. From materials to intelligence, we build technologies for use in the real world."
+
+# content-en/ にあるページは英語版として優先し、無いページは content/ の日本語版を
+# そのまま /en/ にも出す（テンプレート側で「日本語のみ」の注記を付ける）。
+# mounts を書くと既定のマウントが全部消えるので、他のディレクトリも明示する。
+[module]
+  [[module.mounts]]
+    source = "content-en"
+    target = "content"
+    lang = "en"
+  [[module.mounts]]
+    source = "content"
+    target = "content"
+    lang = "en"
+  [[module.mounts]]
+    source = "content"
+    target = "content"
+    lang = "ja"
+  [[module.mounts]]
+    source = "static"
+    target = "static"
+  [[module.mounts]]
+    source = "layouts"
+    target = "layouts"
+  [[module.mounts]]
+    source = "data"
+    target = "data"
+  [[module.mounts]]
+    source = "assets"
+    target = "assets"
+  [[module.mounts]]
+    source = "i18n"
+    target = "i18n"
+
+# 既存 URL を維持する（/archives/NNNN 等）
+uglyURLs = false
+enableRobotsTXT = true
+
+[pagination]
+  pagerSize = 15
+
+[permalinks]
+  archives = "/archives/:filename/"
+  tags = "/archives/tag/:slug/"
+
+[taxonomies]
+  tag = "tags"
+
+[permalinks.term]
+  tags = "/archives/tag/:slug/"
+
+[markup.goldmark.renderer]
+  unsafe = true          # 抽出した HTML をそのまま出力する
+
+# 多言語サイトでは Hugo 埋め込みのリンク/画像レンダーフックが自動で有効になるが、
+# 旧記事の壊れた URL（先頭に %20 等）で落ちるので無効化する
+[markup.goldmark.renderHooks.link]
+  enableDefault = false
+[markup.goldmark.renderHooks.image]
+  enableDefault = false
+
+[markup.tableOfContents]
+  startLevel = 2
+  endLevel = 3
+
+[outputs]
+  home = ["HTML"]
+  section = ["HTML"]
+
+[params]
+  description = "AKG — The University of Tokyo"

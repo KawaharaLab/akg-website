@@ -1,0 +1,438 @@
+/* 川原研究室 — 遊び心から学問的深みへ降りる組み
+   動詞は大きく、そのすぐ下で分野名・キーワードへ落とす。 */
+
+:root{
+  --paper:#FFFFFF;
+  --paper-2:#FAFAFA;
+  --ink:#000000;
+  --graphite:#6E6E6E;
+  --rule:#E6E6E6;
+  --rule-strong:#111111;
+  --crimson:#A81B36;
+  --crimson-soft:#F4E7EA;
+  --jp:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN",Meiryo,sans-serif;
+  --sans:"Schibsted Grotesk",-apple-system,"Helvetica Neue",Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --gut:clamp(20px,4vw,64px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#0C0C0C; --paper-2:#141414; --ink:#F2F2F2; --graphite:#9B9B9B;
+    --rule:#282828; --rule-strong:#F2F2F2; --crimson:#E8798E; --crimson-soft:#2A1A1E;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0C0C0C; --paper-2:#141414; --ink:#F2F2F2; --graphite:#9B9B9B;
+  --rule:#282828; --rule-strong:#F2F2F2; --crimson:#E8798E; --crimson-soft:#2A1A1E;
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--jp);
+  font-size:15.5px;line-height:1.9;-webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility}
+a{color:inherit;text-decoration:none}
+a:hover{color:var(--crimson)}
+a:focus-visible{outline:2px solid var(--crimson);outline-offset:3px}
+img{max-width:100%;height:auto}
+
+/* ---- chrome ---- */
+#masthead,#main,#colophon{max-width:1240px;margin:0 auto;padding-left:var(--gut);padding-right:var(--gut)}
+#masthead{display:flex;justify-content:space-between;align-items:baseline;gap:24px;
+  flex-wrap:wrap;padding-top:34px;padding-bottom:18px;border-bottom:1px solid var(--rule-strong)}
+.site-title{margin:0;font-family:var(--sans);font-weight:700;font-size:17px;letter-spacing:-.01em}
+#masthead nav ul{list-style:none;display:flex;gap:24px;margin:0;padding:0;
+  font-family:var(--sans);font-size:13px;color:var(--graphite);flex-wrap:wrap}
+#colophon{padding-top:56px;padding-bottom:80px;border-top:1px solid var(--rule);margin-top:80px}
+#colophon p{margin:0;font-family:var(--mono);font-size:11.5px;color:var(--graphite);letter-spacing:.03em}
+
+/* ---- page head: 左に見出しと分類、右にメッセージ ---- */
+.page-head{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(24px,5vw,64px);
+  padding:clamp(48px,8vw,96px) 0 clamp(36px,5vw,60px)}
+@media (max-width:820px){.page-head{grid-template-columns:1fr;gap:22px}}
+.page-title{font-family:var(--sans);font-weight:700;
+  font-size:clamp(34px,5.4vw,60px);line-height:1.05;letter-spacing:-.025em;margin:0 0 20px}
+.page-lede{margin:0;color:var(--graphite);font-size:14.5px;line-height:2.05;max-width:50ch}
+.page-lede p{margin:0 0 16px}
+.page-lede p:last-child{margin-bottom:0}
+.crumb{margin:0 0 14px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--crimson)}
+
+/* 領域フィルタ */
+.dom-filters{display:flex;flex-wrap:wrap;gap:8px 22px;font-size:15px}
+.dom-filters a{color:var(--graphite);padding-bottom:2px;border-bottom:1.5px solid transparent}
+.dom-filters a:hover{color:var(--ink);border-bottom-color:var(--crimson)}
+.dom-filters sup{font-family:var(--mono);font-size:10px;color:var(--crimson);margin-left:3px}
+.dom-filters .is-archive{font-style:italic;opacity:.75}
+
+/* ---- 領域ブロック：動詞から学問へ降りる ---- */
+.dom{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(24px,5vw,72px);
+  padding:clamp(44px,6vw,76px) 0;border-top:1px solid var(--rule)}
+@media (max-width:820px){.dom{grid-template-columns:1fr;gap:20px}}
+
+.dom__verb,.verb-xl{display:block;font-family:var(--jp);font-weight:700;
+  letter-spacing:-.045em;line-height:1;margin:0}
+.dom__verb{font-size:clamp(46px,8vw,86px)}
+.verb-xl{font-size:clamp(58px,11vw,124px);margin-bottom:14px}
+.dom__verb:hover{color:var(--crimson)}
+
+/* 大きな動詞の直下で、register を一段落とす */
+.dom__field{margin:12px 0 0;font-size:14px;color:var(--ink)}
+.dom__field .en{font-family:var(--sans);color:var(--crimson);letter-spacing:.04em}
+.dom__field .sep{color:var(--rule);margin:0 8px}
+.dom__keys{margin:11px 0 0;font-family:var(--mono);font-size:10.5px;line-height:2;
+  letter-spacing:.06em;color:var(--graphite);max-width:46ch}
+.dom__body{margin-top:26px;font-size:14px;line-height:2.05;color:var(--graphite);max-width:48ch}
+.dom__body p{margin:0 0 15px}
+.dom__body p:last-child{margin-bottom:0}
+
+/* 代表研究 */
+.dom__workshd,.block__hd{font-family:var(--mono);font-size:10px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--graphite);margin:0 0 16px;font-weight:400}
+.block__hd .cnt{color:var(--crimson);margin-left:6px}
+.works{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:18px}
+.works li{padding-left:15px;border-left:2px solid var(--crimson-soft)}
+.works__t{display:block;font-size:14.5px;font-weight:700;line-height:1.5}
+.works__m{display:block;font-size:13.5px;color:var(--graphite);line-height:1.7;margin-top:3px}
+.works__v{display:block;font-family:var(--mono);font-size:10.5px;color:var(--graphite);
+  letter-spacing:.04em;margin-top:6px;line-height:1.6}
+.works__v b{color:var(--crimson);font-weight:400}
+.works--lg li{border-left-width:3px;padding-left:20px}
+.works--lg .works__t{font-size:17px}
+.works--lg .works__m{font-size:15px}
+.dom__more{display:inline-block;margin-top:22px;font-family:var(--sans);font-size:12.5px;
+  color:var(--crimson);letter-spacing:.02em}
+
+/* ---- ブロック・一覧 ---- */
+.block{padding:clamp(40px,5.5vw,68px) 0;border-top:1px solid var(--rule)}
+.entry-list{list-style:none;margin:0;padding:0}
+.entry-list li{display:flex;justify-content:space-between;align-items:baseline;gap:20px;
+  padding:11px 0;border-bottom:1px solid var(--rule);font-size:14.5px;flex-wrap:wrap}
+.entry-list a{line-height:1.55;flex:1 1 22em}
+.entry-list .meta{display:flex;align-items:center;gap:10px;flex:none}
+.entry-list time{font-family:var(--mono);font-size:11px;color:var(--graphite);
+  font-variant-numeric:tabular-nums}
+.xtag{font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;color:var(--crimson);
+  border:1px solid var(--crimson);padding:0 5px;border-radius:1px}
+
+/* ---- 記事・固定ページ ---- */
+.entry{padding:clamp(40px,6vw,72px) 0;max-width:44em}
+.entry-title{font-family:var(--jp);font-weight:700;font-size:clamp(24px,3.4vw,36px);
+  line-height:1.35;letter-spacing:-.02em;margin:0 0 14px;text-wrap:balance}
+.entry-date{margin:0 0 32px;font-family:var(--mono);font-size:12px;color:var(--graphite);letter-spacing:.05em}
+.entry-content{font-size:16px;line-height:1.95}
+.entry-content p{margin:0 0 20px}
+.entry-content a{color:var(--crimson);text-decoration:underline;text-underline-offset:3px}
+.entry-content h2{font-size:20px;margin:44px 0 14px;letter-spacing:-.01em}
+.entry-content h3{font-size:17px;margin:36px 0 12px}
+.entry-content img{margin:10px 0}
+.entry-content table{border-collapse:collapse;width:100%;font-size:14px}
+.entry-content td,.entry-content th{border-bottom:1px solid var(--rule);padding:9px 12px 9px 0;
+  text-align:left;vertical-align:top}
+.type-page .entry{max-width:none}
+
+.list-title{font-family:var(--sans);font-weight:700;font-size:clamp(28px,4vw,44px);
+  letter-spacing:-.02em;margin:clamp(40px,6vw,72px) 0 26px}
+
+/* 横に溢れるものはその中でスクロールさせる */
+.entry-content{overflow-wrap:anywhere}
+.entry-content table{display:block;overflow-x:auto}
+
+@media (prefers-reduced-motion:no-preference){
+  a,.dom__verb{transition:color .16s ease,border-color .16s ease}
+}
+
+/* 和文タイトルの下に英題を添える */
+.en-sub{display:block;font-family:var(--sans);font-size:12px;color:var(--graphite);
+  line-height:1.5;margin-top:3px;letter-spacing:.01em}
+.entry-title-en{margin:-6px 0 18px;font-family:var(--sans);font-size:15px;
+  color:var(--graphite);line-height:1.5;letter-spacing:.01em}
+
+/* ---- トップ ---- */
+.hero{padding:clamp(56px,10vw,120px) 0 clamp(40px,6vw,72px);
+  display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(24px,5vw,64px);align-items:start}
+@media (max-width:820px){.hero{grid-template-columns:1fr;gap:20px}}
+.hero__left{grid-column:1}
+.hero__kicker{margin:0 0 18px;font-size:15px;line-height:1.8;color:var(--graphite);max-width:34ch}
+.hero__thesis{font-family:var(--jp);font-weight:700;
+  font-size:clamp(38px,7.4vw,88px);line-height:1.12;letter-spacing:-.04em;margin:0}
+.hero__en{margin:16px 0 0;font-family:var(--sans);font-size:13px;
+  color:var(--graphite);line-height:1.6;max-width:42ch;letter-spacing:.01em}
+.hero__right{grid-column:2;max-width:44ch}
+.hero__eg{margin:32px 0 0}
+.hero__eg img{display:block;width:100%;height:auto}
+.hero__eg figcaption{margin-top:10px;font-family:var(--sans);font-size:11.5px;
+  line-height:1.75;color:var(--graphite);max-width:46ch}
+.hero__eg figcaption b{font-weight:400;color:var(--ink)}
+.hero__body{margin:0;font-size:14.5px;line-height:2;color:var(--graphite)}
+.hero__body + .hero__body{margin-top:1.15em}
+.hero__body--en{font-family:var(--sans);font-size:12.5px;line-height:1.85}
+.hero__thesis--en{font-family:var(--sans);font-size:clamp(30px,5.2vw,62px);line-height:1.1;letter-spacing:-.025em}
+.hero__lead{font-size:17px;line-height:1.8;color:var(--ink)}
+.hero__key{font-weight:700;color:var(--ink)}
+.hero__initial{color:var(--crimson)}
+.hero__details{margin-top:18px}
+.hero__toggle{display:list-item;width:fit-content;min-height:44px;box-sizing:border-box;
+  padding:10px 0;cursor:pointer;list-style:none;font-family:var(--sans);font-size:14px;
+  color:var(--crimson);line-height:24px}
+.hero__toggle::-webkit-details-marker{display:none}
+.hero__toggle:hover{text-decoration:underline;text-underline-offset:4px}
+.hero__toggle:focus-visible{outline:2px solid var(--crimson);outline-offset:5px}
+.hero__less{display:none}
+.hero__details[open] > .hero__toggle .hero__more{display:none}
+.hero__details[open] > .hero__toggle .hero__less{display:inline}
+.hero__full{padding-top:18px}
+.hero__invite{margin:22px 0 0;padding-top:16px;border-top:1px solid var(--rule);
+  font-size:14.5px;line-height:1.9;color:var(--ink)}
+.hero__invite a{display:inline-block;font-family:var(--sans);font-size:12px;
+  color:var(--crimson);text-decoration:none;letter-spacing:.02em;white-space:nowrap}
+.hero__invite a:hover{text-decoration:underline}
+@media (max-width:820px){
+  .hero__left,.hero__right{grid-column:auto;max-width:none}
+}
+.block__hd .all{float:right;font-family:var(--sans);font-size:12px;color:var(--crimson);
+  letter-spacing:.02em;text-transform:none}
+.entry-list--news li{padding:9px 0}
+.news-tabs{display:flex;flex-wrap:wrap;gap:24px;border-bottom:1px solid var(--rule);margin-bottom:20px}
+.news-tabs a{padding:12px 0;color:var(--graphite);text-decoration:none;border-bottom:2px solid transparent}
+.news-tabs a[aria-current="page"]{color:var(--crimson);border-bottom-color:var(--crimson)}
+.news-tabs span{font-size:12px;margin-left:6px}
+.news-count{font-size:13px;color:var(--graphite)}
+.news-pagination{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;margin:20px 0}
+.news-pagination a{display:inline-block;min-height:44px;padding:10px 0;box-sizing:border-box;color:var(--crimson)}
+.news-year{margin:32px 0}
+.news-year h2{font-family:var(--sans);font-size:22px;font-weight:500}
+
+.home-doms{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+  background:var(--rule);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+@media (max-width:900px){.home-doms{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.home-doms{grid-template-columns:1fr}}
+.home-dom{background:var(--paper);padding:24px 20px 26px;display:block}
+.home-dom:hover{background:var(--paper-2);color:inherit}
+.home-dom__verb{display:block;font-family:var(--jp);font-weight:700;
+  font-size:clamp(26px,3.4vw,36px);letter-spacing:-.04em;line-height:1.1}
+.home-dom:hover .home-dom__verb{color:var(--crimson)}
+.home-dom__field{display:block;margin-top:9px;font-size:12px;color:var(--ink)}
+.home-dom__field .en{font-family:var(--sans);color:var(--crimson);letter-spacing:.04em}
+.home-dom__sum{display:block;margin-top:10px;font-size:12.5px;line-height:1.75;color:var(--graphite)}
+
+/* ---- 和文組版 ---- */
+body{line-break:strict}
+/* 見出しは仮名を詰める（プロポーショナル）*/
+.hero__thesis,.verb-xl,.dom__verb,.home-dom__verb,
+.entry-title,.list-title,.page-title{font-feature-settings:"palt" 1}
+/* 本文の英数は和文と混ざるので、行頭行末の約物だけ整える */
+.dom__body,.page-lede,.hero__body,.entry-content{font-feature-settings:"palt" 0}
+/* 長い URL だけ折る。和文は自然改行に任せる */
+.entry-content{overflow-wrap:normal}
+.entry-content a{overflow-wrap:anywhere}
+
+/* ---- 分類語を英語主体にする ---- */
+.dom__verb,.verb-xl--en,.home-dom__verb--en{
+  font-family:var(--sans);font-weight:700;letter-spacing:-.045em;
+}
+/* ラテンは同じ級数でも小さく見えるので少し起こす */
+.dom__verb{font-size:clamp(44px,7.4vw,82px)}
+.verb-xl--en{font-size:clamp(54px,10.4vw,124px);line-height:.92;letter-spacing:-.05em}
+.home-dom__verb--en{font-size:clamp(24px,3.1vw,33px);letter-spacing:-.03em}
+/* 副題の和語動詞は本文書体で、少し強く */
+.dom__field .ja,.home-dom__field .ja{font-family:var(--jp);font-weight:700;color:var(--crimson)}
+
+/* ---- 図版（plate）----
+   研究図版は注記が焼き込まれているので、トリミングしない。
+   白い台に載せ、暗いテーマでも台の側を白のまま保つ。額装の考え方。 */
+.plate{
+  display:block;background:#FFFFFF;border:1px solid var(--rule);
+  margin:0;overflow:hidden;max-width:100%;
+}
+.plate img{display:block;width:100%;height:100%;object-fit:contain;padding:12px}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .plate{border-color:#2E2E2E}
+}
+:root[data-theme="dark"] .plate{border-color:#2E2E2E}
+
+.plate--wide{aspect-ratio:16/9;margin-bottom:28px}
+.plate--hero{aspect-ratio:16/8}
+.plate--card{aspect-ratio:16/9;margin-bottom:16px}
+
+figure.plate--hero{margin:0 0 40px;border:0;background:none;overflow:visible;padding:0}
+figure.plate--hero img{
+  background:#FFFFFF;border:1px solid var(--rule);aspect-ratio:16/8;
+}
+figure.plate--hero figcaption{
+  padding:14px 2px 0;font-size:12px;color:var(--graphite);
+  line-height:1.85;max-width:60ch;
+}
+
+/* ---- Why / Approach ---- */
+.qa{margin:0 0 26px}
+.qa:last-child{margin-bottom:0}
+.qa__label{
+  margin:0 0 10px;font-family:var(--mono);font-size:10px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--crimson);font-weight:400;
+}
+.qa p:not(.qa__label){margin:0 0 12px;line-height:2.05}
+.qa p:not(.qa__label):last-child{margin-bottom:0}
+
+/* 研究室全体の Why / Approach は二段に大きく置く */
+.lab-qa{
+  display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,72px);
+  padding:clamp(30px,4vw,48px) 0 clamp(44px,6vw,72px);
+  border-top:1px solid var(--rule-strong);
+}
+@media (max-width:820px){.lab-qa{grid-template-columns:1fr;gap:26px}}
+.lab-qa .qa{margin:0}
+.lab-qa .qa p:not(.qa__label){font-size:15px;color:var(--ink);max-width:44ch}
+
+/* ---- 記事に紐づく発表 ---- */
+.pubs{margin:52px 0 0;padding-top:26px;border-top:1px solid var(--rule-strong)}
+.pubs__list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:18px}
+.pubs__list li{padding-left:16px;border-left:2px solid var(--crimson-soft)}
+.pubs__list a{display:block;color:inherit}
+.pubs__list a:hover .pubs__cite{color:var(--crimson);text-decoration:underline;text-underline-offset:3px}
+.pubs__cite{display:block;font-size:13.5px;line-height:1.8}
+.pubs__meta{display:block;margin-top:5px;font-family:var(--mono);font-size:10.5px;
+  letter-spacing:.08em;color:var(--graphite)}
+.entry-doms{margin:36px 0 0;display:flex;gap:8px;flex-wrap:wrap}
+.entry-doms a{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;color:var(--crimson);
+  border:1px solid var(--crimson);padding:2px 8px}
+.entry-doms a:hover{background:var(--crimson);color:#fff}
+
+/* ---- 同じ研究の記録（プロジェクト内の別記事）---- */
+.series{margin:48px 0 0;padding-top:24px;border-top:1px solid var(--rule)}
+.series__list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.series__list li{display:flex;justify-content:space-between;gap:16px;align-items:baseline;
+  flex-wrap:wrap;font-size:14px}
+.series__list a{line-height:1.6}
+.series__meta{font-family:var(--mono);font-size:10.5px;color:var(--graphite);
+  letter-spacing:.06em;flex:none}
+
+/* ---- Research 一覧：四領域を 2 列で一望する ---- */
+.dom-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:clamp(34px,5vw,64px) clamp(28px,5vw,56px);
+  padding:clamp(30px,4vw,48px) 0 clamp(50px,7vw,90px);
+  border-top:1px solid var(--rule);
+}
+@media (max-width:760px){.dom-grid{grid-template-columns:1fr;gap:44px}}
+.card{display:block}
+.card .plate--card{aspect-ratio:16/9;margin-bottom:20px;border-color:var(--rule)}
+.card__verb{
+  font-family:var(--sans);font-weight:700;font-size:clamp(26px,3.2vw,34px);
+  letter-spacing:-.035em;line-height:1.1;margin:0 0 7px;
+}
+.card:hover .card__verb{color:var(--crimson)}
+.card__field{margin:0 0 14px;font-size:13px;color:var(--ink)}
+.card__field .ja{font-family:var(--jp);font-weight:700;color:var(--crimson)}
+.card__field .sep{color:var(--rule);margin:0 7px}
+.card__cnt{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;
+  color:var(--graphite);margin-left:10px}
+.card__desc{margin:0 0 13px;font-size:14px;line-height:1.95;color:var(--ink);max-width:42ch}
+.card__keys{margin:0;font-family:var(--mono);font-size:10.5px;line-height:1.95;
+  letter-spacing:.05em;color:var(--graphite)}
+
+.home-dom__keys{display:block;margin-top:11px;font-family:var(--mono);font-size:10px;
+  line-height:1.9;letter-spacing:.05em;color:var(--graphite)}
+
+.block__hd .hint{font-family:var(--jp);letter-spacing:0;text-transform:none;
+  color:var(--graphite);font-size:11px;margin-left:2px}
+
+/* カードに代表研究を一本 */
+.card__work{display:block;margin-top:18px;padding-left:14px;border-left:2px solid var(--crimson-soft)}
+.card__work-hd{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--crimson);margin-bottom:6px}
+.card__work-t{display:block;font-size:13.5px;font-weight:700;line-height:1.5}
+.card__work-m{display:block;font-size:12.5px;line-height:1.8;color:var(--graphite);margin-top:3px}
+
+/* ---- Engagement 社会連携 ---- */
+.page-title-ja{margin:6px 0 0;font-family:var(--jp);font-weight:700;font-size:15px;color:var(--crimson)}
+.eng{display:grid;grid-template-columns:180px 1fr;gap:clamp(20px,4vw,56px);
+  padding:clamp(30px,4vw,46px) 0;border-top:1px solid var(--rule)}
+@media (max-width:760px){.eng{grid-template-columns:1fr;gap:14px}}
+.eng__lead{position:sticky;top:24px;align-self:start}
+.eng__label{margin:0;font-family:var(--jp);font-weight:700;font-size:17px;letter-spacing:-.01em}
+.eng__label-en{margin:5px 0 0;font-family:var(--mono);font-size:10px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--crimson)}
+.eng__list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:26px}
+.eng__list li{padding-left:16px;border-left:2px solid var(--crimson-soft)}
+.eng__t{display:block;font-size:16px;font-weight:700;line-height:1.5}
+.eng__t a{border-bottom:1px solid var(--rule)}
+.eng__t a:hover{color:var(--crimson);border-bottom-color:var(--crimson)}
+.eng__role{display:block;margin-top:4px;font-family:var(--mono);font-size:10.5px;
+  letter-spacing:.06em;color:var(--crimson)}
+.eng__body{display:block;margin-top:9px;font-size:14px;line-height:1.95;color:var(--graphite);max-width:52ch}
+
+.eng__note{margin:14px 0 0;font-size:12px;line-height:1.9;color:var(--graphite)}
+.eng__t-en{display:block;margin-top:2px;font-family:var(--sans);font-size:12px;color:var(--graphite)}
+
+/* ---- 研究領域 ↔ 社会連携 の相互リンク ---- */
+.eng__doms{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.eng__doms a{display:inline-flex;align-items:baseline;gap:6px;
+  font-family:var(--sans);font-size:11px;letter-spacing:.03em;
+  color:var(--crimson);border:1px solid var(--crimson);padding:3px 9px}
+.eng__doms a em{font-family:var(--jp);font-style:normal;font-size:10.5px;color:var(--graphite)}
+.eng__doms a:hover{background:var(--crimson);color:#fff}
+.eng__doms a:hover em{color:#fff}
+
+.eng-link{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px}
+.eng-link li{padding-left:16px;border-left:2px solid var(--crimson-soft)}
+.eng-link a{display:block}
+.eng-link__t{display:block;font-size:15px;font-weight:700;line-height:1.5}
+.eng-link a:hover .eng-link__t{color:var(--crimson)}
+.eng-link__r{display:block;margin-top:3px;font-family:var(--mono);font-size:10.5px;
+  letter-spacing:.06em;color:var(--graphite)}
+
+.legacy-note{margin:-8px 0 24px;font-family:var(--sans);font-size:12px;color:var(--graphite)}
+.legacy-note a{color:var(--crimson);text-decoration:none}
+.legacy-note a:hover{text-decoration:underline}
+
+/* ---- 言語切替 ---- */
+#masthead nav li.lang{margin-left:8px;padding-left:16px;border-left:1px solid var(--rule)}
+#masthead nav li.lang a{color:var(--crimson);text-decoration:none}
+#masthead nav li.lang a:hover{text-decoration:underline}
+.ja-only{margin:18px 0 -6px;font-family:var(--sans);font-size:12px;color:var(--graphite)}
+
+/* Research entry links and thumbnails */
+.works__link{display:block;color:inherit;text-decoration:none}
+.works__link:hover .works__t{text-decoration:underline;text-underline-offset:4px;color:var(--crimson)}
+.works__destination{display:block;margin-top:12px;font-size:12px;color:var(--crimson)}
+.research-entries > li{display:block;padding:20px 0}
+.research-entry{display:grid;grid-template-columns:180px minmax(0,1fr);gap:24px;align-items:center}
+.research-entry__image{display:block;aspect-ratio:4/3;background:#fff;border:1px solid var(--rule);overflow:hidden}
+.research-entry__image img{display:block;width:100%;height:100%;object-fit:contain}
+.research-entry__placeholder{display:grid;place-items:center;height:100%;color:#666;font-size:12px}
+.research-entries .meta{display:block;margin:8px 0 0 204px}
+@media(max-width:600px){
+  .research-entry{grid-template-columns:104px minmax(0,1fr);gap:16px}
+  .research-entries .meta{margin-left:120px}
+}
+.description:target{outline:2px solid var(--crimson);outline-offset:6px;scroll-margin-top:32px}
+
+/* People: compact cards, alumni collapsed by native details. */
+.people-page{max-width:none}
+.people-directory > section,.people-alumni__list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px 24px;margin:32px 0}
+.people-directory section > h2,.people-alumni__list > h3{grid-column:1/-1;margin:12px 0 4px}
+.people-directory section > .row,.people-directory section > .row > .col-xs-12{display:contents}
+.people-directory .card-item{padding:12px 0;border-bottom:1px solid var(--rule);min-width:0}
+.people-directory .row.card-item{display:grid;grid-template-columns:72px minmax(0,1fr);gap:14px;align-items:start}
+.people-directory .card-item figure{margin:0}
+.people-directory .card-item img{width:72px;height:72px;object-fit:cover;margin:0;display:block}
+.people-directory .card-title{font-size:15px;line-height:1.6;margin:0 0 4px;overflow-wrap:anywhere}
+.people-directory .description{font-size:12px;line-height:1.65;margin:0 0 3px;overflow-wrap:anywhere}
+.people-alumni{margin-top:40px;border-top:1px solid var(--rule)}
+.people-alumni > summary{cursor:pointer;padding:22px 0;font-size:22px;list-style:none;color:var(--crimson)}
+.people-alumni > summary::-webkit-details-marker{display:none}
+.people-alumni > summary span{display:inline-block;margin-left:12px;transition:transform .15s}
+.people-alumni[open] > summary span{transform:rotate(45deg)}
+.people-alumni > summary:focus-visible{outline:2px solid var(--crimson);outline-offset:4px}
+@media(max-width:1000px){.people-directory > section,.people-alumni__list{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){
+  .people-directory > section:first-of-type{grid-template-columns:1fr}
+  .people-directory > section,.people-alumni__list{gap:12px 16px}
+  .people-directory .card-title{font-size:14px}
+}
+
+.award-records{margin:20px 0}
+.award-records summary{cursor:pointer;padding:12px 0;color:var(--crimson)}
+.award-records__years{display:flex;flex-wrap:wrap;gap:8px 20px;padding:12px 0}
+.award-records__years a{padding:8px 0}

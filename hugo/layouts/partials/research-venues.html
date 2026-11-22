@@ -1,0 +1,24 @@
+{{ $links := slice }}
+{{ range .Params.pubs }}
+  {{ $cite := .citation }}
+  {{ $venue := "" }}
+  {{ if not (findRE `(?i)adjunct|adj\.|extended abstract|workshop|invited|招待|poster|demo of` $cite) }}
+    {{ if findRE `(?i)transaction.*graphics` $cite }}{{ $venue = "ACM TOG" }}
+    {{ else if findRE `SIGGRAPH.*Conference Papers` $cite }}{{ $venue = "SIGGRAPH Asia" }}
+    {{ else if findRE `UIST|User Interface Software and Technology` $cite }}{{ $venue = "ACM UIST" }}
+    {{ else if findRE `CHI|Human Factors in Computing Systems` $cite }}{{ $venue = "ACM CHI" }}
+    {{ else if findRE `MobiCom|Mobile Computing and Networking` $cite }}{{ $venue = "ACM MobiCom" }}
+    {{ else if findRE `CVPR|Computer Vision and Pattern Recognition` $cite }}{{ $venue = "CVPR" }}
+    {{ else if findRE `Nature Electronics` $cite }}{{ $venue = "Nature Electronics" }}
+    {{ else if findRE `Nature Communications` $cite }}{{ $venue = "Nature Communications" }}
+    {{ else if findRE `Science Robotics` $cite }}{{ $venue = "Science Robotics" }}{{ end }}
+  {{ end }}
+  {{ if and $venue .url }}
+    {{ $links = $links | append (dict "venue" $venue "year" .year "url" .url "citation" $cite) }}
+  {{ end }}
+{{ end }}
+{{ with $links }}
+<ul class="venue-links" aria-label="{{ if eq $.Language.Lang "en" }}Published papers{{ else }}採録論文{{ end }}">
+  {{ range . }}<li><a href="{{ .url }}" title="{{ .citation }}">{{ .venue }}{{ with .year }} {{ . }}{{ end }} <span aria-hidden="true">↗</span></a></li>{{ end }}
+</ul>
+{{ end }}

@@ -1,0 +1,64 @@
+[seeAll]
+other = "すべて見る →"
+[seeDomains]
+other = "四つの領域を見る →"
+[award]
+other = "受賞"
+[newsUpdates]
+other = "ニュース"
+[newsCategories]
+other = "お知らせの種類"
+[newsPageStatus]
+other = "全{{ .Count }}件 · {{ .Page }} / {{ .Pages }}ページ"
+[newsPageNavigation]
+other = "過去のお知らせへの移動"
+[newerNews]
+other = "← 新しい記事"
+[olderNews]
+other = "過去の記事 →"
+[join]
+other = "研究室への参加について →"
+[sameProject]
+other = "同じ研究の記録"
+[latest]
+other = "最新"
+[relatedPubs]
+other = "対応する発表"
+[fiscalYear]
+other = "{{ . }}年度"
+[research]
+other = "研究"
+[mainWorks]
+other = "主な研究"
+[representative]
+other = "代表的な研究"
+[engagementPts]
+other = "社会との接点"
+[inDomain]
+other = "この領域の研究"
+[legacyNote]
+other = "旧サイトの分類です。現在の研究領域は <a href=\"{{ . }}\">Research</a> をご覧ください。"
+[jaOnly]
+other = "このページは日本語のみです。"
+[navLabel]
+other = "サイト内"
+[domainsLabel]
+other = "研究領域"
+[notFound]
+other = "ページが見つかりません"
+[notFoundBody]
+other = "お探しのページは移動したか、削除されています。旧サイトの記事 URL（<code>/archives/番号</code>）はそのまま使えます。"
+[home]
+other = "トップ"
+[dateFmt]
+other = "2006年01月02日"
+[switchTo]
+other = "English"
+
+[viewPublication]
+other = "文献情報を見る →"
+
+[awardRecords]
+other = "年度別の受賞記録"
+[olderAwardRecords]
+other = "過去の総覧"

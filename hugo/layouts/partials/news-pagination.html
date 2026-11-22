@@ -1,0 +1,6 @@
+{{ if gt .TotalPages 1 }}
+<nav class="news-pagination" aria-label="{{ i18n "newsPageNavigation" }}">
+  {{ with .Prev }}<a href="{{ .URL }}" rel="prev">{{ i18n "newerNews" }}</a>{{ end }}
+  {{ with .Next }}<a href="{{ .URL }}" rel="next">{{ i18n "olderNews" }}</a>{{ end }}
+</nav>
+{{ end }}

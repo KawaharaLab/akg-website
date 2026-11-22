@@ -1,0 +1,37 @@
+{{ define "main" }}
+<article class="entry people-page">
+  <header class="landing-head landing-head--title">{{ partial "landing-title.html" (dict "page" . "title" .Title "japanese" "メンバー") }}</header>
+  {{ $en := eq .Language.Lang "en" }}
+  <section class="faculty" aria-labelledby="faculty-heading">
+    <h2 id="faculty-heading">{{ if $en }}Faculty{{ else }}教員{{ end }}</h2>
+    <p class="faculty__intro">{{ if $en }}Each faculty member develops a distinct research programme. We bring our expertise together to create new systems across disciplines.{{ else }}教員それぞれが独自の研究テーマを持ち、研究を進めています。異なる専門を持ち寄り、分野を横断して新しいシステムをつくります。{{ end }}</p>
+    <div class="faculty__grid">
+      {{ range .Site.Data.faculty }}
+      <article class="faculty-card" id="{{ .id }}">
+        <a class="faculty-card__portrait" href="{{ .website }}" aria-label="{{ if $en }}{{ .nameEn }} — website{{ else }}{{ .name }}のWebサイト{{ end }}"><img src="{{ .image }}" alt="{{ if $en }}{{ .nameEn }}{{ else }}{{ .name }}{{ end }}" width="239" height="239" loading="lazy" decoding="async"></a>
+        <div class="faculty-card__identity">
+          <h3><a href="{{ .website }}">{{ if $en }}{{ .nameEn }}{{ else }}{{ .name }}{{ end }}</a></h3>
+          <p class="faculty-card__role">{{ if $en }}{{ .roleEn }}{{ else }}{{ .role }}{{ end }}</p>
+          {{ if .note }}<p class="faculty-card__note">{{ if $en }}{{ .noteEn }}{{ else }}{{ .note }}{{ end }}</p>{{ end }}
+          <p class="faculty-card__focus">{{ if $en }}{{ .focusEn }}{{ else }}{{ .focus }}{{ end }}</p>
+        </div>
+        <p class="faculty-card__description">{{ if $en }}{{ .descriptionEn }}{{ else }}{{ .description }}{{ end }}</p>
+        {{ with .works }}
+        <ul class="faculty-card__works" aria-label="{{ if $en }}Research and activities{{ else }}研究・活動{{ end }}">
+          {{ range . }}<li><a href="{{ if strings.HasPrefix .url "/" }}{{ .url | relLangURL }}{{ else }}{{ .url }}{{ end }}">{{ if $en }}{{ .titleEn }}{{ else }}{{ .title }}{{ end }} <span aria-hidden="true">→</span></a></li>{{ end }}
+        </ul>
+        {{ end }}
+        <div class="faculty-card__links">
+          <a href="{{ .website }}">{{ if $en }}Profile & website{{ else }}プロフィール・Webサイト{{ end }} <span aria-hidden="true">↗</span></a>
+        </div>
+      </article>
+      {{ end }}
+    </div>
+  </section>
+  {{ $directory := .Content }}
+  {{ if eq .Params.contentFormat "html" }}{{ $directory = .RawContent }}{{ end }}
+  {{ $directory = replaceRE `<p class="wp-block-paragraph">[^<]*@[^<]*</p>` "" $directory }}
+  {{ $directory = replaceRE `<p class="description">[^<]*@[^<]*</p>` "" $directory }}
+  <div class="entry-content people-directory">{{ $directory | safeHTML }}</div>
+</article>
+{{ end }}

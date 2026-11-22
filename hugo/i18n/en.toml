@@ -1,0 +1,64 @@
+[seeAll]
+other = "See all →"
+[seeDomains]
+other = "See the four areas →"
+[award]
+other = "Award"
+[newsUpdates]
+other = "News"
+[newsCategories]
+other = "Announcement categories"
+[newsPageStatus]
+other = "{{ .Count }} articles · Page {{ .Page }} of {{ .Pages }}"
+[newsPageNavigation]
+other = "Browse announcements"
+[newerNews]
+other = "← Newer articles"
+[olderNews]
+other = "Older articles →"
+[join]
+other = "About joining the lab →"
+[sameProject]
+other = "Records of the same project"
+[latest]
+other = "latest"
+[relatedPubs]
+other = "Related publications"
+[fiscalYear]
+other = "FY{{ . }}"
+[research]
+other = "Projects"
+[mainWorks]
+other = "Selected work"
+[representative]
+other = "Representative work"
+[engagementPts]
+other = "Engagement"
+[inDomain]
+other = "Projects in this area"
+[legacyNote]
+other = "This is the old site's classification. For current research areas see <a href=\"{{ . }}\">Research</a>."
+[jaOnly]
+other = "This page is available in Japanese only."
+[navLabel]
+other = "Site"
+[domainsLabel]
+other = "Research areas"
+[notFound]
+other = "Page not found"
+[notFoundBody]
+other = "The page you are looking for has moved or been removed. Article URLs from the old site (<code>/archives/number</code>) still work."
+[home]
+other = "Home"
+[dateFmt]
+other = "2 January 2006"
+[switchTo]
+other = "日本語"
+
+[viewPublication]
+other = "View publication →"
+
+[awardRecords]
+other = "Award records by year"
+[olderAwardRecords]
+other = "Earlier overview"

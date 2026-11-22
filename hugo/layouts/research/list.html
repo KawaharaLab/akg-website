@@ -1,0 +1,34 @@
+{{ define "main" }}
+{{ $en := eq .Site.Language.Lang "en" }}
+<header class="research-intro landing-head">
+{{ partial "landing-title.html" (dict "page" . "title" "Research" "japanese" "研究") }}
+<div><h2>{{ if $en }}From materials to intelligence, we build technologies for the real world.{{ else }}材料から知能まで、現実世界で使える技術をつくる。{{ end }}</h2>
+<p>{{ if $en }}Our foundation is ubiquitous computing: embedding computation in everyday life. Today, we focus on Physical AI, designing sensors, materials, circuits and AI together to understand and act on the physical world.{{ else }}日常生活に計算を組み込むユビキタスコンピューティングが、研究の根底にあります。現在はPhysical AIに力を入れ、センサ・材料・回路・AIを一緒に設計しながら、実空間を理解し、働きかける技術を研究しています。{{ end }}</p></div>
+</header>
+<nav class="research-theme-nav" aria-label="{{ if $en }}Research perspectives{{ else }}研究の視点{{ end }}">{{ range .Site.Data.research_perspectives }}<a href="#{{ .id }}">{{ .verb }} / {{ .title }}</a>{{ end }}</nav>
+<section class="research-now">
+<h2 class="research-block-title">{{ if $en }}Four perspectives on our research{{ else }}研究を横断する四つの視点{{ end }}</h2><p class="research-perspective-intro">{{ if $en }}These perspectives connect our work across materials, sensing, circuits and AI. A project may span more than one.{{ else }}材料・センシング・回路・AIを横断する研究を、四つの視点から紹介します。一つの研究が複数の視点にまたがることもあります。{{ end }}</p>
+{{ $allWorks := slice }}{{ range .Site.Data.works }}{{ range . }}{{ $allWorks = $allWorks | append . }}{{ end }}{{ end }}
+<div class="research-perspective-grid">
+{{ range $i,$theme := .Site.Data.research_perspectives }}
+<article class="research-theme" id="{{ .id }}">
+<div class="research-theme__heading"><span class="research-theme__number">{{ printf "%02d" (add $i 1) }}</span><h3>{{ .verb }}<span class="research-perspective-ja"> / {{ .title }}</span></h3></div>
+<a class="research-perspective-image" href="{{ printf "research/%s/" .id | relLangURL }}" aria-label="{{ if $en }}Explore {{ .verb }}{{ else }}{{ .verb }} / {{ .title }}の研究を見る{{ end }}"><img src="{{ .image }}" alt="" loading="lazy" decoding="async"></a>
+<div class="research-theme__body"><p>{{ if $en }}{{ .descriptionEn }}{{ else }}{{ .description }}{{ end }}</p>
+<h4>{{ if $en }}Related work{{ else }}関連する成果{{ end }}</h4>
+<ul>{{ range .works }}{{ $anchor := . }}{{ range $allWorks }}{{ if strings.HasSuffix .url (printf "#%s" $anchor) }}
+<li><a href="{{ .url | relLangURL }}">{{ if $en }}{{ .titleEn }}{{ else }}{{ .titleJa }}{{ end }} <span aria-hidden="true">→</span></a></li>
+{{ end }}{{ end }}{{ end }}</ul><a class="research-perspective-more" href="{{ printf "research/%s/" .id | relLangURL }}">{{ if $en }}Explore {{ .verb }}{{ else }}この視点の研究を見る{{ end }} →</a></div>
+</article>
+{{ end }}
+</div>
+<p class="research-image-note">{{ if $en }}Category images are AI-generated illustrations.{{ else }}カテゴリ画像はAIによる生成イメージです。{{ end }}</p>
+</section>
+<section class="research-foundations">
+<div class="research-section-head"><h2>{{ if $en }}Research we build on{{ else }}研究の積み重ね{{ end }}</h2><p>{{ if $en }}Our work has expanded through wireless power, sensing and digital fabrication. Explore individual projects and their development in the archive.{{ else }}無線給電、センシング、デジタルファブリケーションへと研究を広げてきました。個々の研究とその発展は、アーカイブからたどれます。{{ end }}</p></div>
+<div class="research-foundations__grid">{{ range $.Site.Data.research_features }}{{ if in (slice "5783" "4815" "3868") .id }}{{ $feature := . }}{{ with $.Site.GetPage (printf "/archives/%s" .id) }}
+<a class="research-foundation" href="{{ .RelPermalink }}">{{ partial "research-thumbnail.html" . }}<h3>{{ if $en }}{{ $feature.titleEn }}{{ else }}{{ $feature.title }}{{ end }}</h3></a>
+{{ end }}{{ end }}{{ end }}</div>
+<a class="research-archive-link" href="{{ "research/archive/" | relLangURL }}">{{ if $en }}Explore the research archive{{ else }}研究アーカイブを見る{{ end }} →</a>
+</section>
+{{ end }}

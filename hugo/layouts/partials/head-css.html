@@ -1,0 +1,7 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+{{ with slice (resources.Get "css/main.css") (resources.Get "css/typography.css") (resources.Get "css/about.css") (resources.Get "css/research.css") (resources.Get "css/landing.css") | resources.Concat "css/site.css" }}
+  {{ $c := . | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $c.RelPermalink }}" integrity="{{ $c.Data.Integrity }}">
+{{ end }}

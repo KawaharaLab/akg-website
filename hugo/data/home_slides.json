@@ -1,0 +1,67 @@
+{
+  "revision": "0",
+  "interval": 7,
+  "autoplay": true,
+  "slides": [
+    {
+      "id": "slide-5621",
+      "researchId": "5621",
+      "image": "/images/home/abstract-textile-v1.png",
+      "url": "/archives/5621/",
+      "caption": "全身無線給電・通信服",
+      "captionEn": "Body-scale wireless power and communication clothing",
+      "alt": "素材と形を表現した抽象的な生成仮画像（実際の研究製品ではありません）",
+      "altEn": "AI-generated abstract study of materials and forms; not an actual research product.",
+      "fit": "cover",
+      "positionX": 50,
+      "positionY": 50,
+      "enabled": true,
+      "generated": true
+    },
+    {
+      "id": "slide-5727",
+      "researchId": "5727",
+      "image": "/images/home/abstract-loop-v1.png",
+      "url": "/archives/5727/",
+      "caption": "超低電力な指輪型マウス",
+      "captionEn": "An ultra-low-power mouse ring",
+      "alt": "素材と形を表現した抽象的な生成仮画像（実際の研究製品ではありません）",
+      "altEn": "AI-generated abstract study of materials and forms; not an actual research product.",
+      "fit": "cover",
+      "positionX": 50,
+      "positionY": 50,
+      "enabled": true,
+      "generated": true
+    },
+    {
+      "id": "slide-5783",
+      "researchId": "5783",
+      "image": "/images/home/abstract-curves-v1.png",
+      "url": "/archives/5783/",
+      "caption": "asEars：片耳難聴者の聞こえを支える",
+      "captionEn": "asEars: supporting people with single-sided deafness",
+      "alt": "素材と形を表現した抽象的な生成仮画像（実際の研究製品ではありません）",
+      "altEn": "AI-generated abstract study of materials and forms; not an actual research product.",
+      "fit": "cover",
+      "positionX": 50,
+      "positionY": 50,
+      "enabled": true,
+      "generated": true
+    },
+    {
+      "id": "slide-4790",
+      "researchId": "4790",
+      "image": "/images/home/abstract-planes-v1.png",
+      "url": "/archives/4790/",
+      "caption": "MilliSign：視界不良でも読める標識",
+      "captionEn": "MilliSign: signs readable in poor visibility",
+      "alt": "素材と形を表現した抽象的な生成仮画像（実際の研究製品ではありません）",
+      "altEn": "AI-generated abstract study of materials and forms; not an actual research product.",
+      "fit": "cover",
+      "positionX": 50,
+      "positionY": 50,
+      "enabled": true,
+      "generated": true
+    }
+  ]
+}

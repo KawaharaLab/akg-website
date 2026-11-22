@@ -1,0 +1,186 @@
+- id: kawahara
+  name: 川原 圭博
+  nameEn: Yoshihiro Kawahara
+  role: 教授
+  roleEn: Professor
+  image: /wordpress/wp-content/uploads/2026/07/kawahara_20260702−１.jpeg
+  website: http://kawahara.akg.t.u-tokyo.ac.jp/
+  email: kawahara@akg.t.u-tokyo.ac.jp
+  focus: 材料からAIまでのシステム設計
+  focusEn: Designing systems from materials to AI
+  description: ユビキタスコンピューティングを根底に、材料・センサ・回路・AIを横断し、暮らしに溶け込む技術を研究しています。
+  descriptionEn: Rooted in ubiquitous computing, his research spans materials, sensors, circuits and AI to create technologies that blend into everyday life.
+  sources:
+  - hero.txt
+  note: インクルーシブ工学連携研究機構機構長
+  noteEn: Director, RIISE
+  works:
+  - url: /archives/1/
+    title: 身近なプリンタで回路をつくる
+    titleEn: Printing circuits with an everyday printer
+  - url: /archives/3863/
+    title: poimo：柔らかいモビリティ
+    titleEn: 'poimo: soft mobility'
+- id: kamezaki
+  name: 亀﨑 允啓
+  nameEn: Mitsuhiro Kamezaki
+  role: 特任教授
+  roleEn: Project Professor
+  image: /wordpress/wp-content/uploads/2023/04/kamezaki_June2022-e1680339957741.jpg
+  website: https://sites.google.com/view/mitsuhirokamezaki/
+  email: kamezaki@akg.t.u-tokyo.ac.jp
+  focus: 環境に適応するロボットと機構
+  focusEn: Robots and mechanisms that adapt to their environment
+  description: 柔らかいロボットの身体や触覚センサ、点検ロボットなど、実環境で働く機械の構造と制御を研究しています。
+  descriptionEn: He studies structures and control for machines that work in real environments, including soft robot bodies, tactile sensors and inspection robots.
+  sources:
+  - https://sites.google.com/view/mitsuhirokamezaki/
+  works:
+  - url: /archives/5054/
+    title: 壊れやすいものをつかむ
+    titleEn: Grasping fragile objects
+  - url: /archives/6361/
+    title: 自己修復するロボットスキン
+    titleEn: Self-healing robot skins
+- id: takeuchi
+  name: 竹内 孝
+  nameEn: Koh Takeuchi
+  role: 准教授（クロスアポイントメント）
+  roleEn: Associate Professor (Cross-appointment)
+  image: /wordpress/wp-content/uploads/2026/07/profile.jpg
+  website: https://www.ml.ist.i.kyoto-u.ac.jp/koh.takeuchi/
+  email: ''
+  focus: データから学ぶモデルと意思決定
+  focusEn: Learning from data for prediction and decision-making
+  description: 機械学習とデータマイニングの数理モデルを研究し、実データの解析や予測を社会の意思決定につなげています。
+  descriptionEn: He develops mathematical models for machine learning and data mining, connecting real-world data analysis and prediction to decision-making in society.
+  sources:
+  - https://www.ml.ist.i.kyoto-u.ac.jp/koh.takeuchi/
+  works:
+  - url: https://www.ml.ist.i.kyoto-u.ac.jp/koh.takeuchi/
+    title: 機械学習・データマイニングの研究と活動
+    titleEn: Research and activities in machine learning and data mining
+- id: shiba
+  name: 芝 慎太朗
+  nameEn: Shintaro Shiba
+  role: 特任講師
+  roleEn: Project Lecturer
+  image: /wordpress/wp-content/uploads/2026/04/profile.jpg
+  website: https://shibashintaro.com/
+  email: shiba@akg.t.u-tokyo.ac.jp
+  focus: 変化を捉える視覚と省電力AI
+  focusEn: Event-based vision and energy-efficient AI
+  description: イベントカメラによる視覚認識と、ハードウェア・ソフトウェアの協調設計を通じて、省電力で実世界を認識するAIを研究しています。
+  descriptionEn: He studies event-camera perception and hardware–software co-design to build AI that recognises the real world with low power consumption.
+  sources:
+  - https://shibashintaro.com/
+  works:
+  - url: /publications-2026/#event-ray-tracing
+    title: イベントカメラによる3D再構成
+    titleEn: 3D reconstruction with event cameras
+- id: sasatani
+  name: 笹谷 拓也
+  nameEn: Takuya Sasatani
+  role: 助教
+  roleEn: Assistant Professor
+  image: /wordpress/wp-content/uploads/2021/07/sasatani_profile.jpg
+  website: https://www.takuyasasatani.com/
+  email: sasatani@akg.t.u-tokyo.ac.jp
+  focus: 無線技術でつなぐセンサと身体
+  focusEn: Wireless technologies for sensors and the body
+  description: 無線給電・通信技術を基盤に、センサシステムや神経インタフェースへの応用を研究しています。
+  descriptionEn: He studies wireless power and communication technologies and their applications to sensor systems and neural interfaces.
+  sources:
+  - https://www.takuyasasatani.com/
+  works:
+  - url: /archives/4790/
+    title: ミリ波で読み取る誘導標識
+    titleEn: Guidance signs read by millimetre-wave radar
+  - url: /archives/4759/
+    title: 部屋スケールの無線給電
+    titleEn: Room-scale wireless power
+- id: caremel
+  name: Caremel Cedric Jean Vincent
+  nameEn: Cedric Jean Vincent Caremel
+  role: 特任助教
+  roleEn: Project Assistant Professor
+  image: /wordpress/wp-content/uploads/2019/12/IMG_3974-e1575357795553.jpg
+  website: https://cdrccrml.github.io/
+  email: cedric@akg.t.u-tokyo.ac.jp
+  focus: 物理現象を使う計算と学習
+  focusEn: Computation and learning through physical dynamics
+  description: 材料の履歴特性や物理ダイナミクスを計算に生かし、リザバーコンピューティングによる予測と柔らかい機械の制御を研究しています。
+  descriptionEn: He uses material hysteresis and physical dynamics for computation, studying reservoir-based prediction and control of soft machines.
+  sources:
+  - https://cdrccrml.github.io/
+  works:
+  - url: /archives/5713/
+    title: 相転移アクチュエータの状態予測
+    titleEn: Predicting phase-change actuator states
+  - url: /archives/4769/
+    title: ソフトアクチュエータの学習制御
+    titleEn: Learning to control soft actuators
+- id: murakami
+  name: 村上 弘晃
+  nameEn: Hiroaki Murakami
+  role: 特任助教
+  roleEn: Project Assistant Professor
+  image: /wordpress/wp-content/uploads/2024/10/murakami_UTokyo_2024-10-02.jpg
+  website: https://hiroakimurakami.com/
+  email: murakami@akg.t.u-tokyo.ac.jp
+  focus: 触覚とAIによるロボットの判断
+  focusEn: Robot decision-making through touch and AI
+  description: 力覚・触覚の情報をLLMやVLAと結びつけ、接触状態の解釈やロボットの行動選択を研究しています。
+  descriptionEn: He connects force and tactile information with LLMs and VLAs to study the interpretation of contact states and robot action selection.
+  sources:
+  - hugo/content/archives/5704.md
+  - hugo/content/archives/6376.md
+  works:
+  - url: /archives/6376/
+    title: 力覚とVLAの統合
+    titleEn: Integrating force sensing and VLAs
+  - url: /archives/5704/
+    title: LLMによる触覚解釈
+    titleEn: Interpreting touch with LLMs
+- id: takahashi
+  name: 髙橋 亮
+  nameEn: Ryo Takahashi
+  role: 特任助教
+  roleEn: Project Assistant Professor
+  image: /wordpress/wp-content/uploads/2023/04/takahashi.jpg
+  website: https://www.ryotakahashi.me/
+  email: takahashi@akg.t.u-tokyo.ac.jp
+  focus: 衣服と指輪のウェアラブル技術
+  focusEn: Wearable technologies in clothes and rings
+  description: 衣服を無線の給電・通信基盤にする技術と、わずかな電力で動く指輪型入力デバイスを研究しています。
+  descriptionEn: He studies clothing as infrastructure for wireless power and communication, alongside ring-shaped input devices that operate on very little power.
+  sources:
+  - https://www.ryotakahashi.me/
+  works:
+  - url: /archives/5621/
+    title: 全身の無線給電・通信服
+    titleEn: Clothing for body-scale wireless power and data
+  - url: /archives/5727/
+    title: 超低電力な指輪型マウス
+    titleEn: An ultra-low-power mouse ring
+- id: takaki
+  name: 高木 健
+  nameEn: Ken Takaki
+  role: 助教
+  roleEn: Assistant Professor
+  image: /wordpress/wp-content/uploads/2024/03/0Q5A8827-Edit.jpg
+  website: https://www.kentakaki.com/
+  email: takaki@akg.t.u-tokyo.ac.jp
+  focus: 聞こえを支えるデバイスと音声処理
+  focusEn: Devices and speech processing that support hearing
+  description: 聴覚障害者の暮らしを支えるため、骨伝導や音声処理を使うウェアラブルデバイスを研究しています。
+  descriptionEn: He studies wearable devices using bone conduction and speech processing to support the everyday lives of people with hearing impairments.
+  sources:
+  - https://www.kentakaki.com/
+  works:
+  - url: /archives/5783/
+    title: asEars：片耳難聴者の聞こえを支える
+    titleEn: 'asEars: supporting single-sided hearing loss'
+  - url: /publications-2026/#selective-listening
+    title: 重なった声を聞き分ける
+    titleEn: Distinguishing overlapping voices

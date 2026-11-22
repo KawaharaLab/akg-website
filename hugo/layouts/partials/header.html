@@ -1,0 +1,29 @@
+{{- $other := "" }}
+{{- range .Translations }}{{ $other = . }}{{ end }}
+<header id="masthead">
+  <p class="site-title"><a href="{{ "/" | relLangURL }}">{{ .Site.Title }}</a></p>
+  <nav aria-label="{{ i18n "navLabel" }}"><ul>
+    <li><a href="{{ "research/" | relLangURL }}">Research</a></li>
+    <li><a href="{{ "member/" | relLangURL }}">People</a></li>
+    {{- $publicationsURL := "publications-2026/" -}}
+    {{- if .Site.GetPage "/publications" }}{{ $publicationsURL = "publications/" }}{{ end -}}
+    <li><a href="{{ $publicationsURL | relLangURL }}">Publications</a></li>
+    <li><a href="{{ "archives/category/news/" | relLangURL }}">News</a></li>
+    <li><a href="{{ "engagement/" | relLangURL }}">Engagement</a></li>
+    <li><a href="{{ "about/" | relLangURL }}">About</a></li>
+    <li class="lang">
+      {{- with $other -}}
+        <a href="{{ .RelPermalink }}" hreflang="{{ .Language.Lang }}" lang="{{ .Language.Lang }}" data-setlang="{{ .Language.Lang }}">{{ i18n "switchTo" }}</a>
+      {{- else -}}
+        {{- $home := "" }}{{ range .Site.Home.Translations }}{{ $home = . }}{{ end -}}
+        {{- with $home }}<a href="{{ .RelPermalink }}" hreflang="{{ .Language.Lang }}" lang="{{ .Language.Lang }}" data-setlang="{{ .Language.Lang }}">{{ i18n "switchTo" }}</a>{{ end -}}
+      {{- end -}}
+    </li>
+  </ul></nav>
+</header>
+<script>
+document.addEventListener('click',function(e){
+  var a=e.target.closest&&e.target.closest('a[data-setlang]');
+  if(a){try{localStorage.setItem('akg-lang',a.getAttribute('data-setlang'));}catch(x){}}
+});
+</script>

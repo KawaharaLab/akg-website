@@ -1,0 +1,20 @@
+{{ $src := "" }}
+{{ $exists := false }}
+{{ $pages := slice . }}
+{{ range .Translations }}{{ $pages = $pages | append . }}{{ end }}
+{{ range $pages }}
+  {{ $candidates := slice }}
+  {{ with .Params.thumbnail }}{{ $candidates = $candidates | append . }}{{ end }}
+  {{ range findRE `<img[^>]+src="[^"]+"` .Content }}
+    {{ $candidates = $candidates | append (replaceRE `.*src="([^"]+)".*` "$1" .) }}
+  {{ end }}
+  {{ range $candidates }}
+    {{ $candidate := replaceRE `^/wp-content/` "/wordpress/wp-content/" . }}
+    {{ if and (not $exists) (fileExists (printf "static%s" (urls.Parse $candidate).Path)) }}
+      {{ $src = $candidate }}{{ $exists = true }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+<span class="research-entry__image">
+  {{ if $exists }}<img src="{{ $src | safeURL }}" alt="" loading="lazy" decoding="async">{{ else }}<span class="research-entry__placeholder" aria-hidden="true">{{ i18n "research" }}</span>{{ end }}
+</span>

@@ -1,0 +1,19 @@
+{{- with .Site.Data.home_slides -}}
+{{- $en := eq $.Site.Language.Lang "en" -}}
+{{- $slides := where .slides "enabled" true -}}
+{{- if $slides }}
+<section class="home-slideshow" aria-label="{{ if $en }}Featured research{{ else }}注目の研究{{ end }}" aria-roledescription="{{ if $en }}carousel{{ else }}スライドショー{{ end }}" data-interval="{{ .interval }}" data-autoplay="{{ .autoplay }}">
+  <div class="home-slideshow__frames">
+    {{ range $index, $slide := $slides }}
+    <figure class="home-slide" {{ if gt $index 0 }}hidden{{ end }} role="group" aria-label="{{ add $index 1 }} / {{ len $slides }}">
+      <a class="home-slide__image" href="{{ .url | relLangURL }}"><img src="{{ .image }}" alt="{{ if $en }}{{ .altEn }}{{ else }}{{ .alt }}{{ end }}" style="object-fit:{{ .fit }};object-position:{{ .positionX }}% {{ .positionY }}%" {{ if eq $index 0 }}fetchpriority="high" loading="eager"{{ else }}loading="lazy"{{ end }}></a>
+      <figcaption><a href="{{ .url | relLangURL }}">{{ if $en }}{{ .captionEn }}{{ else }}{{ .caption }}{{ end }} <span aria-hidden="true">→</span></a>{{ if .generated }} <small class="home-slide__note">{{ if $en }}AI-generated placeholder{{ else }}生成仮画像{{ end }}</small>{{ end }}</figcaption>
+    </figure>
+    {{ end }}
+  </div>
+  {{ if gt (len $slides) 1 }}
+  <button class="home-slideshow__pause" type="button" data-slide-pause hidden data-pause="{{ if $en }}Pause slideshow{{ else }}スライドショーを一時停止{{ end }}" data-play="{{ if $en }}Play slideshow{{ else }}スライドショーを再生{{ end }}">{{ if $en }}Pause slideshow{{ else }}スライドショーを一時停止{{ end }}</button>
+  {{ end }}
+</section>
+{{ end }}{{ end }}
+{{ with resources.Get "js/home-slideshow.js" }}{{ $js := . | minify | fingerprint }}<script src="{{ $js.RelPermalink }}" defer></script>{{ end }}

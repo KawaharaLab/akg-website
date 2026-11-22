@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.LanguageCode }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ partial "page-title.html" . }} – {{ .Site.Title }}{{ end }}</title>
+<meta name="description" content="{{ .Site.Params.description }}">
+{{- range .AllTranslations }}
+<link rel="alternate" hreflang="{{ .Language.LanguageCode }}" href="{{ .Permalink }}">
+{{- end }}
+{{- with .AllTranslations }}{{ with index . 0 }}
+<link rel="alternate" hreflang="x-default" href="{{ .Permalink }}">
+{{- end }}{{ end }}
+{{ partial "lang-switch.html" . }}
+{{ partial "head-css.html" . }}
+</head>
+<body class="{{ .Kind }}{{ with .Type }} type-{{ . }}{{ end }} lang-{{ .Site.Language.Lang }}">
+{{ partial "header.html" . }}
+<main id="main">{{ partial "ja-only.html" . }}{{ block "main" . }}{{ end }}</main>
+{{ partial "footer.html" . }}
+</body>
+</html>

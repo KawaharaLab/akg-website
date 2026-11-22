@@ -1,0 +1,19 @@
+{{ $en := eq .Page.Language.Lang "en" }}
+{{ $id := .Get "id" }}
+<section class="about-section about-section--{{ $id }}" id="{{ $id }}">
+  <h2>{{ .Get "title" }}</h2>
+  <div class="about-section__body entry-content">
+    {{ if eq $id "lab" }}
+    <div class="about-system" aria-label="{{ if $en }}Designing across materials and AI{{ else }}材料からAIまで横断して設計する{{ end }}">
+      <p class="about-system__world">{{ if $en }}Environment · Body · Everyday life{{ else }}環境・身体・暮らし{{ end }}</p>
+      <strong>Physical AI</strong>
+      <ul>{{ range (cond $en (slice "Materials" "Structures" "Devices" "Circuits" "Communication" "Computation" "AI") (slice "材料" "構造" "デバイス" "回路" "通信" "計算" "AI")) }}<li>{{ . }}</li>{{ end }}</ul>
+      <p>{{ if $en }}Let form and materials do part of the computation.{{ else }}形や材料に、計算の一部を担わせる。{{ end }}</p>
+    </div>
+    {{ end }}
+    {{ if eq $id "join" }}
+    <ul class="about-abilities">{{ range (cond $en (slice "Discover" "Express" "Make") (slice "発見する" "表現する" "つくる")) }}<li><span aria-hidden="true"></span><strong>{{ . }}</strong></li>{{ end }}</ul>
+    {{ end }}
+    {{ .Inner | markdownify }}
+  </div>
+</section>

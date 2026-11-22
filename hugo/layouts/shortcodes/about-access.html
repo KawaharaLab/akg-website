@@ -1,0 +1,15 @@
+{{ $en := eq .Page.Language.Lang "en" }}
+<section class="about-section about-section--access" id="access">
+  <h2>{{ if $en }}Access{{ else }}アクセス{{ end }}</h2>
+  <div class="about-access entry-content">
+    {{ with .Page.Site.GetPage "/access" }}
+      {{ range $i, $section := split .RawContent "## " }}
+        {{ if gt $i 0 }}
+        <section class="about-location">
+          {{ (printf "## %s" $section) | markdownify }}
+        </section>
+        {{ end }}
+      {{ end }}
+    {{ end }}
+  </div>
+</section>

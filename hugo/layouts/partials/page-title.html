@@ -1,0 +1,2 @@
+{{- /* 英語サイトで記事に titleEn があればそれを見出しにする */ -}}
+{{- if and (eq .Site.Language.Lang "en") .Params.titleEn }}{{ .Params.titleEn }}{{ else }}{{ .Title }}{{ end -}}

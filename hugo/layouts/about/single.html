@@ -1,0 +1,27 @@
+{{ define "main" }}
+{{ $en := eq .Language.Lang "en" }}
+<article class="about-page">
+  <header class="about-head landing-head">
+    {{ partial "landing-title.html" (dict "page" . "title" "About" "japanese" "私たちについて") }}
+    <div class="about-intro">
+      <h2 class="about-statement">{{ if $en }}From materials to intelligence, we build technology that can be used in the real world.{{ else }}材料から知能まで、現実世界で使える技術をつくる。{{ end }}</h2>
+      <p class="about-overview">{{ .Params.intro }}</p>
+    </div>
+    <nav class="about-nav" aria-label="{{ if $en }}On this page{{ else }}ページ内の案内{{ end }}">
+      <a href="#lab">{{ if $en }}How we work{{ else }}研究の進め方{{ end }}</a>
+      <a href="#history">{{ if $en }}History{{ else }}これまで{{ end }}</a>
+      <a href="#join">{{ if $en }}Joining the lab{{ else }}研究室への参加{{ end }}</a>
+      <a href="#access">{{ if $en }}Access{{ else }}アクセス{{ end }}</a>
+    </nav>
+  </header>
+  <div class="about-photos">
+    {{ range .Site.Data.about_photos }}
+    <figure>
+      <img src="{{ .src }}" alt="{{ if $en }}{{ .altEn }}{{ else }}{{ .alt }}{{ end }}" width="1536" height="1024" loading="lazy">
+      <figcaption>{{ if $en }}{{ .captionEn }}{{ else }}{{ .caption }}{{ end }}{{ if .generated }}<span>{{ if $en }}AI-generated placeholder · to be replaced{{ else }}生成した仮画像・実写に差し替え予定{{ end }}</span>{{ end }}</figcaption>
+    </figure>
+    {{ end }}
+  </div>
+  <div class="about-content">{{ .Content }}</div>
+</article>
+{{ end }}

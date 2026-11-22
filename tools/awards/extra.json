@@ -1,0 +1,19 @@
+{
+ "_comment": "機械抽出に乗らなかった項目の手訳。bare_p は class なし <p> のリンク文言（2025 MEDIA）、index_li は /awardsmedia/ 旧一覧ページで年ページと一致しなかった <li>（キー = 含まれる日本語断片）。",
+ "bare_p": {
+  "東京大学、指輪型マウス「picoRing」を発表　超低消費電力でAR操作も可能": "The University of Tokyo announces the ring-type mouse “picoRing”: ultra-low power, with AR operation too",
+  "東大が開発した“指輪型マウス”picoRingが話題　1カ月以上動作する超低消費電力デバイス": "UTokyo's “ring-type mouse” picoRing draws attention: an ultra-low-power device that runs for over a month",
+  "東大、超低消費電力の指輪型マウス「picoRing」を発表": "UTokyo announces the ultra-low-power ring-type mouse “picoRing”",
+  "1カ月以上駆動する超低消費電力の指輪型無線マウスを開発": "An ultra-low-power ring-type wireless mouse that runs for over a month",
+  "マウスを指輪に！ 東大が開発した超低消費電力ウェアラブル「picoRing」": "A mouse in a ring! “picoRing,” the ultra-low-power wearable developed by UTokyo",
+  "世界初、東大が長時間使用できる指輪型無線マウスを開発―ARグラスの操作性向上へ": "World first: UTokyo develops a long-lasting ring-type wireless mouse, toward better control of AR glasses"
+ },
+ "outlets_after_link": {"DXマガジン": "DX Magazine", "知財図鑑": "Chizai Zukan"},
+ "index_li": [
+  {"contains": ["ヤマト科学賞"], "en": "Yoshihiro Kawahara, Yamato Scientific Award, 4 Mar. 2016"},
+  {"contains": ["接近検知手法", "山下記念研究賞"], "en": "Masaru Takagi, Kousuke Fujimoto, Yoshihiro Kawahara, Tohru Asami, “Detecting Approaching Electric and Hybrid Vehicles Using a Smartphone,” UBI43, 2014-UBI-43(12), July 2014. <b>(Yamashita SIG Research Award)</b>"},
+  {"contains": ["接近検知手法", "優秀論文賞"], "en": "Masaru Takagi, Kousuke Fujimoto, Yoshihiro Kawahara, Tohru Asami, “Detecting Approaching Electric and Hybrid Vehicles Using a Smartphone,” UBI43, 2014-UBI-43(12), July 2014. <b>(Best Paper Award)</b>"},
+  {"contains": ["漏洩電磁界低減手法"], "en": "Yoshiaki Narusue, “A Current-Focused Method for Reducing Leakage Electromagnetic Fields in Magnetic Resonant Wireless Power Transfer, and a Reconfigurable Wireless Power Transfer Sheet,” Department of Information and Communication Engineering, Graduate School of Information Science and Technology, 24 Mar. 2014, <b>Department Head's Award</b>."},
+  {"contains": ["共振器配置"], "en": "Yoshiaki Narusue, “Resonator Placement Enabling High-Efficiency Power Delivery over an Arbitrary Number of Hops in Magnetic Resonant Wireless Power Transfer Systems,” Department of Information and Communication Engineering, Faculty of Engineering, 23 Mar. 2012, <b>Best Bachelor's Thesis Award</b>."}
+ ]
+}

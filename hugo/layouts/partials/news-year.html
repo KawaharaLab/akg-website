@@ -1,0 +1,8 @@
+<section class="news-year" id="{{ .id }}-{{ .year }}">
+  <h3>{{ .year }}{{ if not .en }}<span>年</span>{{ end }}</h3>
+  <ul class="entry-list">
+  {{ range .pages }}
+    <li><a href="{{ .RelPermalink }}">{{ partial "page-title.html" . }}</a><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time></li>
+  {{ end }}
+  </ul>
+</section>

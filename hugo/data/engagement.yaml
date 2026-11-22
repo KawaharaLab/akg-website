@@ -1,0 +1,123 @@
+sections:
+- key: industry
+  label: 企業等との共同研究
+  labelEn: Joint research with companies and partners
+  items:
+  - id: poimo
+    domains:
+    - act
+    title: poimo — 風船構造パーソナルモビリティ
+    titleEn: poimo — inflatable personal mobility
+    role: mercari R4D・新山研究室 共同
+    roleEn: with Mercari R4D and the Niiyama Lab
+    body: ポーズをとるだけでカスタムメイドできる乗り物。空気を抜いて折りたためる。誰もが自分に合った移動手段を得られる社会をねらう。
+    bodyEn: A vehicle custom-made simply by striking a pose. Deflate it and fold it away. Aimed at a society in which everyone can have a means of getting around that fits them.
+  - id: uav
+    domains:
+    - perceive
+    title: ミリ波レーダによる UAV 誘導標識
+    titleEn: Millimetre-wave radar markers for UAV guidance
+    role: NTT 共同研究
+    roleEn: Joint research with NTT
+    body: 視界不良下でも読み取れる標識。悪条件での運用を前提に設計している。
+    bodyEn: Markers that can be read even in poor visibility, designed from the outset for operation in bad conditions.
+- key: ventures
+  label: 事業・サービスにつながった研究
+  labelEn: Research that led to businesses and services
+  items:
+  - id: elephantech
+    domains:
+    - dissolve
+    title: Elephantech
+    role: 研究成果の事業化
+    roleEn: Commercialisation of research
+    body: 家庭用インクジェットプリンタで電子回路を刷る Instant Inkjet Circuits の系譜にある企業。環境負荷の小さい基板製造に取り組む。
+    bodyEn: A company in the lineage of Instant Inkjet Circuits, which prints electronic circuits with a home inkjet printer. It works on circuit-board manufacturing with a small environmental footprint.
+    url: https://elephantech.com/
+  - id: sensprout
+    title: SenSprout
+    role: 研究室発の起業・サービス化の事例（サービス終了）
+    roleEn: A laboratory start-up and service (service discontinued)
+    body: 研究室の土壌水分センシングの研究を基に起業し、サービスとして提供するところまでつながりました。現在はサービスを終了していますが、研究成果を実際の利用につなげた事例です。
+    bodyEn: Research on soil-moisture sensing in the laboratory led to a start-up and the provision of a service. The service has since been discontinued, but it remains an example of research reaching practical use.
+    url: /archives/59/
+- key: inclusive
+  label: 使う人とともに進める研究
+  labelEn: Research with the people who use the technology
+  items:
+  - id: asears
+    domains:
+    - perceive
+    title: asEars
+    role: 片耳難聴者の聞こえを支援する研究
+    roleEn: Research supporting people with single-sided deafness
+    body: 片耳難聴者のためのメガネ型デバイス。聞こえない側の音をマイクで拾い、骨伝導で聞こえる耳へ渡す。
+    bodyEn: Glasses-type device for people with single-sided deafness. A microphone picks up sound on the deaf side and passes it by bone conduction to the hearing ear.
+    url: /archives/5783/
+  - id: shuwa
+    domains:
+    - perceive
+    title: 話者非依存日本手話認識
+    titleEn: Signer-independent Japanese Sign Language recognition
+    role: '2026'
+    roleEn: '2026'
+    body: ろう者が自身の第一言語で即時に意思疎通できる環境をつくる。計算資源を絞っても話者に依存しない認識をねらう。
+    bodyEn: An environment in which deaf people can communicate immediately in their first language. Aims at signer-independent recognition even with limited computing resources.
+  - id: choshu
+    domains:
+    - perceive
+    title: 選択的聴取の支援
+    titleEn: Support for selective listening
+    role: 2023 — 2026
+    roleEn: 2023 — 2026
+    body: 重なった声のどちらかを聞き取れるよう、音声の時間構造を変形する。片側性難聴向けの頭部装着マイクアレイも開発。
+    bodyEn: Reshapes the temporal structure of speech so that either of two overlapping voices can be picked out. Also a head-mounted microphone array for single-sided hearing loss.
+- key: bumon
+  label: 社会連携研究部門
+  labelEn: Joint Divisions
+  note: 組織間の連携と人材交流の枠組みとして、RIISEでは社会連携研究部門を設けています。企業の研究者を共同研究員として迎え、大学の研究者とともに研究開発を進めます。
+  noteEn: RIISE establishes joint research divisions as a framework for collaboration and exchange of people between organisations. Company researchers join as visiting researchers and conduct research and development with university researchers.
+  items:
+  - id: kachi
+    domains: []
+    title: 価値交換工学
+    titleEn: Value Exchange Engineering
+    role: メルカリ R4D ラボ
+    roleEn: Mercari R4D Lab
+    body: 誰もがフェアで安全な価値交換を行える未来へ。
+    bodyEn: Toward a future in which everyone can exchange value fairly and safely.
+  - id: knit
+    domains:
+    - dissolve
+    title: 次世代ニットイノベーション
+    titleEn: Next-Generation Knit Innovation
+    role: 島精機製作所
+    roleEn: Shima Seiki
+    body: 誰もが次世代のサステイナブルなファッションを享受できる未来へ。
+    bodyEn: Toward a future in which everyone enjoys sustainable, next-generation fashion.
+  - id: kuki
+    domains:
+    - think
+    title: 共創空間デザイン
+    titleEn: Co-creative Space Design
+    role: ダイキン工業
+    roleEn: Daikin Industries
+    body: 誰もが安全で快適に過ごせる空気・空間デザインが可能な未来へ。
+    bodyEn: Toward a future in which air and spaces can be designed so that everyone is safe and comfortable.
+- key: riise
+  label: 連携を支える研究機構
+  labelEn: An institution supporting collaboration
+  items:
+  - id: riise
+    domains:
+    - perceive
+    - think
+    - act
+    - dissolve
+    title: インクルーシブ工学連携研究機構（RIISE）
+    titleEn: Inclusive Society through Engineering
+    role: 川原圭博 — 機構長
+    roleEn: Yoshihiro Kawahara — Director
+    body: 誰もが技術革新の恩恵を受けられる包摂的な社会へ。東京大学の七つの部局からなる超領域組織。産業界と組み、インクルーシブな社会の「あるべき未来ビジョン」を描き、実現の核となる技術を各部局から持ち寄って研究室をダイナミックに構成する。
+    bodyEn: Toward an inclusive society in which everyone benefits from technological innovation. A cross-disciplinary organisation spanning seven departments of the University of Tokyo. Working with industry, it draws a vision of the inclusive future that ought to be, and dynamically assembles laboratories around the core technologies each department brings.
+    url: https://www.riise.u-tokyo.ac.jp/

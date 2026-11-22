@@ -1,0 +1,9 @@
+# Approved 2026-09-06. Names describe the selected design, not licensed CSS family IDs.
+status: deferred-by-user
+latin: Clarimo UD
+japanese: UD新ゴ
+simplifiedChinese: UD新ゴ 簡体字
+fallbackLatin: Schibsted Grotesk
+fallbackJapanese: Zen Kaku Gothic New
+# Activate only after confirming the provider's supported faces, weights and domains.
+# Preserve personal-name spelling; choose zh-Hans only from explicit language metadata.

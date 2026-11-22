@@ -1,0 +1,32 @@
+- id: perceive
+  image: /images/research/perceive-abstract-v1.png
+  verb: Perceive
+  title: わかる
+  titleEn: Perceive
+  description: イベントカメラや独自センサの情報をニューラルネットワークで扱い、空間の形や変化を捉えます。音や触覚も含め、実世界で起きていることを理解する方法を研究しています。
+  descriptionEn: We use neural networks to process information from event cameras and custom sensors, capturing spatial structure and change. We study ways to understand what is happening in the physical world, including sound and touch.
+  works: [event-ray-tracing, selective-listening, sign-language]
+- id: think
+  image: /images/research/think-abstract-v1.png
+  verb: Think
+  title: 考える
+  titleEn: Think
+  description: 世界モデルや大規模言語モデル、強化学習を使い、実環境に合わせた判断と制御を研究しています。空調制御に取り組むとともに、用途に合わせてAIの処理と回路を設計する、省電力なAIチップの研究も始めています。
+  descriptionEn: We study decision-making and control suited to real environments using world models, large language models and reinforcement learning. Alongside air-conditioning control, we are beginning research on low-power AI chips that design computation and circuits for their use cases.
+  works: [world-model-sampling, llm-hvac, reflex-gating]
+- id: act
+  image: /images/research/act-abstract-v1.png
+  verb: Act
+  title: はたらきかける
+  titleEn: Act
+  description: センサ・機構・制御を一緒に設計し、物体や環境に働きかける方法を研究しています。独自センサの力・触覚情報を動作の学習につなげ、VLAと組み合わせた器用な操作を目指します。
+  descriptionEn: We design sensors, mechanisms and control together to study ways of acting on objects and environments. We connect force and tactile information from custom sensors to learning actions, aiming for dexterous manipulation in combination with vision-language-action models.
+  works: [haptic-contact, acoustic-gripper, touch-onomatopoeia]
+- id: dissolve
+  image: /images/research/dissolve-abstract-v1.png
+  verb: Dissolve
+  title: とけこむ
+  titleEn: Dissolve
+  description: 衣服や小さな装着型デバイスに、センシング・通信・入力の機能を組み込みます。電子テキスタイルや極低電力の回路を使い、生活の中で使い続けられる形を研究しています。
+  descriptionEn: We integrate sensing, communication and input into clothing and small wearable devices. Using electronic textiles and ultra-low-power circuits, we study forms that people can continue to use in everyday life.
+  works: [picoring-mouse, nfc-clothing, knittable-textiles]

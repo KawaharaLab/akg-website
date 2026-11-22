@@ -1,0 +1,27 @@
+{{ $en := .en }}
+<ul class="news-tiles">
+  {{ range .pages }}
+    {{ $kind := cond $en "News" "ニュース" }}
+    {{ if in .Params.categories "award" }}
+      {{ $kind = cond $en "Award" "受賞" }}
+    {{ else if in .Params.categories "press" }}
+      {{ $kind = cond $en "Press release" "プレスリリース" }}
+    {{ else if or (in .Params.categories "seminar") (findRE "(?i)seminar|セミナー" .Title) }}
+      {{ $kind = cond $en "Seminar" "セミナー" }}
+    {{ else if in .Params.categories "events" }}
+      {{ $kind = cond $en "Event" "イベント" }}
+    {{ end }}
+    <li>
+      {{ $image := index .Site.Data.news_images (string .Params.wpId) }}
+      {{ $src := .Params.thumbnail | default $image.src }}
+      <a class="news-tile" href="{{ .RelPermalink }}">
+        <span class="news-tile__visual">{{ with $src }}<img class="news-tile__image" src="{{ . | safeURL }}" alt="" loading="lazy" decoding="async">{{ end }}</span>
+        <span class="news-tile__text">
+        <span class="news-tile__meta"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time><span>{{ $kind }}</span></span>
+        <span class="news-tile__title">{{ partial "page-title.html" . }}</span>
+        <span class="news-tile__arrow" aria-hidden="true">→</span>
+        </span>
+      </a>
+    </li>
+  {{ end }}
+</ul>

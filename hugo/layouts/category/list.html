@@ -1,0 +1,23 @@
+{{ define "main" }}
+{{ if or (eq .Params.categoryPath "news") (eq .Params.categoryPath "news/award") (eq .Params.categoryPath "news/press") }}
+{{ partial "news-list.html" . }}
+{{ else }}
+<h1 class="list-title">{{ partial "page-title.html" . }}</h1>
+{{ if .Params.legacy }}<p class="legacy-note">{{ i18n "legacyNote" ("research/" | relLangURL) | safeHTML }}</p>{{ end }}
+{{ $posts := where .Site.RegularPages "Section" "archives" }}
+{{ with .Params.filterCategories }}
+  {{ $posts = where $posts ".Params.categories" "intersect" . }}
+{{ end }}
+{{ with .Params.filterTag }}
+  {{ $posts = where $posts ".Params.tags" "intersect" (slice .) }}
+{{ end }}
+{{ $paginator := .Paginate $posts.ByDate.Reverse }}
+<ul class="entry-list">
+{{ range $paginator.Pages }}
+  <li><a href="{{ .RelPermalink }}">{{ partial "page-title.html" . }}</a>
+      {{ with .Date }}<time datetime="{{ .Format "2006-01-02" }}">{{ .Format "2006.01.02" }}</time>{{ end }}</li>
+{{ end }}
+</ul>
+{{ template "_internal/pagination.html" . }}
+{{ end }}
+{{ end }}
