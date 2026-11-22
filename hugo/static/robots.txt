@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.akg.t.u-tokyo.ac.jp/sitemap.xml

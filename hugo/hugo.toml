@@ -52,7 +52,7 @@ title = "AKG"
 
 # 既存 URL を維持する（/archives/NNNN 等）
 uglyURLs = false
-enableRobotsTXT = true
+enableRobotsTXT = false  # static/robots.txt を使う（home の outputs を HTML に絞ると自動生成されない）
 
 [pagination]
   pagerSize = 15
